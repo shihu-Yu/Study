@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>071-隐藏元素.html</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		ul{
+			width: 200px;
+			height: 200px;
+			border: 1px solid green;
+		}
+		li{
+			width: 50px;
+			height: 50px;
+			border:1px solid black;
+		}
+		/*.father1{
+			display: none;
+		}
+		.son1{
+			display: block;
+		}
+		子元素不会单独显示
+		*/
+		/*.father2{
+			opacity: 0;
+		}
+		.son{
+			opacity: 1;
+		}
+		子元素不会单独显示
+		*/
+		.father3{
+			visibility: hidden;
+		}
+		.son3{
+			visibility: visible;
+		}
+		/*特性	display	opacity	visibility
+		隐藏属性值	none	0	hidden;
+		显示属性值	block	1	visible
+		节点是否还存在	是	是	是
+		是否脱离文档	是	否	否
+		是否会改变布局	是	否	否
+		是否会可以触发事件	否	是	否
+		子元素是否会单独显示	否	否	是
+		*/
+	</style>
+</head>
+<body>
+	<ul class="father1" onclick="">
+		<li class="son1">1</li>
+	</ul>
+	<ul class="father2">
+		<li class="son1">2</li>
+	</ul>
+	<ul class="father3">
+		<li class="son3">3</li>
+	</ul>
+</body>
+</html>

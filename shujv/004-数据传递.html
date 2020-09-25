@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据传递</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            width: 400px;
+            height: 400px;
+            background-color: darkgray;
+        }
+        .target{
+            width: 100px;
+            height: 100px;
+            background-color: cadetblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="container" class="container"></div>
+    <div class="target" id="target"  draggable="true"></div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    //设置数据 dataTransfer.setData(key,val)
+    // 获取数据 dataTransfer.getData(key)
+
+    $('#target')
+    .on('dragstart',function(ev){
+        ev.originalEvent.dataTransfer.setData('targetId',ev.target.id)
+    })
+
+    $('#container')
+    .on('drop',function(ev){
+        var targetId = ev.originalEvent.dataTransfer.getData('targetId')
+        $('#container').append($('#'+targetId));
+    })
+    .on('dragover',function(ev){
+        ev.preventDefault();
+    });
+</script>
+</html>

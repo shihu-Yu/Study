@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>080-2D转换练习-图片悬停遮罩效果.html</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.wrap{
+			width: 200px;
+			height: 200px;
+			margin:100px auto;
+			border:10px solid gray;
+			position: relative;
+			overflow: hidden;
+		}
+		img{
+			width: 100%;
+			height:100%;
+		}
+		.wrap .box{
+			width: 200px;
+			background-color:rgba(240,10,0,0.6);
+			position: absolute;
+			top: 0;
+			left: 0px;
+			transform-origin: right bottom;
+			transform: rotate(90deg);
+			transition:all 0.5s;
+		}
+		.wrap:hover .box{
+			transform: rotate(0deg);
+		}
+		.box .hd{
+			line-height: 60px;
+			text-align: center;
+			font-size: 30px;
+			color: white;
+		}
+		.box .nr{
+			height: 140px;
+			text-align: center;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<img src="./6.jpg">
+		<div class="box">
+			<div class="hd">高圆圆</div>
+			<div class="nr">来自中国沈阳</div>
+		</div>
+	</div>
+</body>
+</html>

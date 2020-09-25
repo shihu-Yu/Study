@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>构造函数创建自定义对象方法演化</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	//1. 用js内置的构造函数创建对象
+	/*
+
+	var person = new Array()
+	person.name = 'Tom';
+	person.age = 18;
+	person.sayHi = function() {
+		console.log("Hello");
+	}
+	person.sort = '...'//该对象覆盖掉了内置函数生成对象自带的属性和方法
+
+	console.log(person.sort)//输出结果是... 而非内置函数Array自身所带的sort属性
+
+	*/
+
+	/*
+	//2.用Object对象来创建对象
+	var obj = new Object();
+	obj.name = 'lilei';
+	obj.age = 20;
+	obj.sayHi = function(){
+	    console.log(this.name + ' say Hello');
+	}
+	
+	console.log()
+	
+	*/
+
+	/*
+	//3.用工厂模式的函数创建对象
+	function createPerson(name,age){
+    var obj = new Object();
+    obj.name = name;
+    obj.age = age;
+    obj.showName = function(){
+        console.log("I am "+this.name);
+    }
+    obj.showAge = function(){
+        console.log("I am "+this.age + " years old");   
+    }
+    return obj;
+}
+
+	*/
+
+	/*
+
+	//4. 用new关键字和工厂函数创建对象
+
+	function Person(name,age){
+    this.name = name;
+    this.age = age;
+    this.showName = function(){
+        console.log("I am "+this.name);
+    }
+    this.showAge = function(){
+        console.log("I am "+this.age + " years old");   
+    }
+}
+	*/
+
+
+	/*
+
+	//5. new + 工厂函数+全局函数
+	function Person(name,age){
+    this.name = name;
+    this.age = age;
+    this.showName = showName;
+    this.showAge = showAge;
+	}
+	function showName(){
+	    console.log("I am "+this.name);
+	}
+	function showAge(){
+	    console.log("I am "+this.age + " years old");   
+	}
+
+	*/
+
+	//6. 构造原型模式
+
+	/*
+	function Person(name,age){
+		//所有变化的属性和方法都可以写在构造器中
+		this.name = name;
+		this.age = age ;
+	}
+	Person.prototype.sayHi = function(){//可以在原型对象prototype添加共用的属性或者方法
+		console.log("I am "+this.name + ',I am ' + this.age + " years old")
+	}
+	Person.prototype.LEGS = 2  //可以在原型对象prototype添加共用的属性或者方法
+	Person.prototype.run = function(){ //可以在原型对象prototype添加共用的属性或者方法
+		console.log("I am "+this.name+" I have "+  Person.prototype.LEGS + ' legs' + ',I can running')
+	}
+
+	var p1 = new Person('tom',20)
+	p1.sayHi()
+	p1.run()
+	var p2 = new Person('Lilei',21)
+	console.log(p2.LEGS)
+	p2.run()
+	*/
+	
+	//7. 构造原型模式合并	 
+
+	/*
+	function Person(name,age){
+		//所有变化的属性和方法都可以写在构造器中
+		//当下面new 的时候会有  this-->
+		this.name = name;
+		this.age = age ;
+		//当下面new 的时候会有 return this
+	}
+	//是把上面构造原型模式的内容 写进一个对象里面
+	Person.prototype = {
+		sayHi:function(){
+		console.log("I am "+this.name + ',I am ' + this.age + " years old")
+	},//   逗号一定要写
+		LEGS:2,//  逗号一定要写
+		run:function(){
+			console.log("I am "+this.name+" I have "+  Person.prototype.LEGS + ' legs' + ',I can running')
+		}
+}	
+	var p1 = new Person('tom',20)
+	p1.sayHi()
+	p1.run()
+	var p2 = new Person('Lilei',21)
+	console.log(p2.LEGS)
+	p2.run()
+
+	*/
+
+	//8.动态原型模式
+
+	function Person(name,age){
+		//所有变化的属性和方法都可以写在构造器中
+		this.name = name;
+		this.age = age ;
+		if(!this.LEGS){
+        Person.prototype.LEGS = 2;
+    }
+    if(!this.sayHi){
+        Person.prototype.sayHi = function(){
+            console.log('Hello, I am ' + this.name+ ', I am '+this.age+' years old, and '+'I have '+this.LEGS+' legs');
+        }
+    }    
+}
+	var p1 = new Person('tom',20)
+	p1.sayHi()
+	
+	var p2 = new Person('Lilei',21)
+	console.log(p2.LEGS)
+	
+
+</script>
+</html>

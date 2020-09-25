@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>将两张图片合并成一张图片</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        canvas{
+            border: 1px solid blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+</body>
+<script>
+    
+    var oCanvas = document.getElementById('canvas')
+    oCanvas.width = 500
+    oCanvas.height = 313
+    var ctx = oCanvas.getContext('2d')
+
+    var img1 = new Image()
+    var img2 = new Image()
+    img1.src = './images/f.jpg'
+    img1.onload = function(){
+        ctx.drawImage(img1,0,0,500,313)
+        //添加图片2
+        img2.onload = function(){
+            //设置图片二的格式
+            ctx.drawImage(img2,400,213,100,100)
+        }
+        img2.src = './images/e.png'
+    }
+</script>
+</html>
+

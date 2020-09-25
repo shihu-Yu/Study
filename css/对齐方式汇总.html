@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>对齐方式汇总</title>
+	<style type="text/css">
+	/*方法1    利用父元素的padding值*/
+	/*
+		.wrap{
+			width: 800px;
+			height:400px;
+			background-color: green;
+			box-sizing:border-box;
+			padding-left: 300px;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: maroon;
+		}
+		*/
+
+		/*方法2    利用子元素的margin值*/
+		/*
+		.wrap{
+			width: 800px;
+			height:400px;
+			background-color: green;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: maroon;
+			margin-left: 300px;
+		}
+		*/
+
+		/*方法3    利用子元素的margin值*/
+		/*
+		.wrap{
+			width: 800px;
+			height:400px;
+			background-color: green;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: maroon;
+			margin: auto;
+		}
+		*/
+
+		/*方法3    利用绝对定位*/
+		/*
+		.wrap{
+			width: 800px;
+			height:400px;
+			background-color: green;
+			position: relative;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: maroon;
+			position: absolute;
+			left: 50%;
+			margin-left: -100px;
+		}
+		*/
+		/*方法3    利用弹性布局  (  最优方案  )*/
+
+		.wrap{
+			width: 800px;
+			height:400px;
+			background-color: green;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: maroon;
+			
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="box"></div>
+	</div>
+</body>
+</html>

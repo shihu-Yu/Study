@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+	<meta charset="utf-8">
+	<title>060-定位流布局-显示顺序.html</title>
+	<style type="text/css">
+	/*多个元素在定位流中显示的前后顺序，该顺序指的是在z轴的显示顺序。类似于PS中图层的前后顺序。
+	定位流中元素显示顺序的规则是
+	默认情况下,定位流中的元素会盖住标准流中的元素
+	默认情况下,定位流中后面的元素会覆盖住前面的元素
+	可以通过z-index属性来更改元素的覆盖关系,该属性定义了沿z轴的位置,值越大,显示越靠前,默认值是0
+	z-index的值可以是负值
+	父级元素的z-index属性会影响到子元素的z-index,子元素的z-index属性最终的值是所有父级元素中最顶层父级元素的z-index值
+	*/
+		*{
+			padding: 0;
+			margin:0;
+		}
+		.box1{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: fixed;
+			left: 0;
+			top: 0;
+			z-index: 3;
+		}
+		.box2{
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+			position: fixed;
+			left: 0;
+			top: 0;
+			z-index: 1
+		}
+		.box3{
+			width: 400px;
+			height: 400px;
+			background-color: maroon;
+			position: fixed;
+			left: 0;
+			top: 0;
+			z-index: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1">1</div>
+	<div class="box2">2</div>
+	<div class="box3">3</div>
+</body>
+</html>

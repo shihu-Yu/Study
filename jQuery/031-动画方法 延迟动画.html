@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>延迟动画</title>
+    <style>
+        *{
+            padding:0 ;
+            margin: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: cadetblue;
+            margin-top: 10px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    $('div').delay(1000).animate({width:200},1000);
+    $('div').animate({height:200},1000);
+    $('div').animate({opacity:0.5},1000);
+    /*
+    延迟动画只对后面的动画起作用 因此这个案例只对第一个动画有延迟，对后面的两个动画没有延迟
+
+    时长的单位是毫秒
+    */
+    
+
+</script>
+</html>

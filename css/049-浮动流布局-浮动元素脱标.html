@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>049-浮动流布局-浮动元素脱标.html</title>
+	<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+		}
+			/*浮动元素脱标后的在浮动流中的特点
+		因为脱离标准流,所以浮动的元素不区分块状，行内，行内块状，他的属性和行内块状一样
+		浮动流的元素不可以用margin: 0 auto;来水平居中
+		浮动元素脱标后在浮动流中的排列规则
+		同方向上,先浮动的显示在前面,后浮动的显示在后面,注意这个先后指的是结构上的先后而不是css的书写先后
+		不同方向上,左浮动找左浮动元素，右浮动找右浮动元素
+		浮动后元素的位置由浮动前元素在标准流中的位置决定,这个位置主要指的是浮动前在标准流中是第几行,浮动后还是显示在第几行
+		由于浮动元素的位置和浮动前在标准流的位置有关,所以严格意识上说浮动元素是非完全脱标*/
+		.box1{
+			width: 50px;
+			height: 50px;
+			background: red;
+			float: left;
+		}
+		.box2{
+			width: 100px;
+			height: 100px;
+			background: maroon;
+			/*float: left;*/
+
+		}
+		.box3{
+			width: 200px;
+			height: 200px;
+			background: blue;
+			/*float: left;*/
+		}
+		.box4{
+			width: 400px;
+			height: 400px;
+			background: green;
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1">YourBones</div>
+	<div class="box2">大鱼</div>
+	<div class="box3">10000Reasons</div>
+	<div class="box4">yushihu</div>
+</body>
+</html>

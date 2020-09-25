@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>048-浮动流布局-浮动添加.html</title>
+	<style type="text/css">
+		*{
+			padding-top: 0;
+			margin-left: 0;
+		}
+		.box{
+			width: 600px;
+			height: 600px;
+			border:10px solid black;
+			margin:50px auto;
+			margin-top: 20px;
+			padding:20px 20px;
+		}
+		.box1{
+			width: 100px;
+			height: 100px;
+			background: red;
+			float: left;
+			/*				float: left|right|none(默认)
+			float的取值只有左(left)对齐和右(right)对齐，没有中间对齐
+			父元素的margin/border/padding的值对浮动定位的子元素的位置没有影响,浮动定位的子元素是从父元素的内容区域开始参考的
+			浮动流主要是用来水平排版的
+			虽然把元素设置为行内块状也可以实现水平排版,但有不足之处,例如左右水平排版,如果父元素宽度不固定的情况下会发生错位,所以在项目中一般都用浮动流来实现水平排版
+			目前出现了更新更好的页面布局技术，所以使用浮动来进行页面布局应被看作传统的布局方法。*/
+		}
+		.box2{
+			width: 100px;
+			height: 100px;
+			background: maroon;
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="box1"></div>
+		<div class="box2"></div>
+	</div>
+</body>
+</html>

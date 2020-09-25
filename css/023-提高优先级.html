@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>023-提高优先级.html</title>
+	<style type="text/css">
+	/*!important必须写在需要改变优先级属性的分号;前面
+	!不能省略
+	!important只能提高某个属性的优先级,不能提高该选择器中其他属性的优先级
+	由于!important会改变选择器的优先规则,所以在实际项目中谨慎使用*/
+		div{
+			color: red
+		}
+		*{
+			color: yellow
+		}
+		p{
+			color: blue !important;
+		}
+		.dahai{
+			color: maroon
+		}
+		
+		#dahai{
+			color: purple
+		}
+	</style>
+</head>
+<body>
+	<div class="father" id="father">
+		<div class="son" id="son">
+			<p class="dahai" id="dahai">大海</p>
+		</div>
+	</div>
+</body>
+</html>

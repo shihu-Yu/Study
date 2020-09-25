@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽事件</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            width: 400px;
+            height: 400px;
+            background-color: darkgray;
+        }
+        .target{
+            width: 100px;
+            height: 100px;
+            background-color: cadetblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="container" class="container"></div>
+    <div class="target" draggable="true"></div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    //被拖拽元素事件
+    $('.target')
+    .on('dragstart',function(){
+        //开始拖动时触发
+        console.log('dragstart....')
+    })
+    .on('drag',function(){
+        //拖动时触发，触发非常频繁,只要在拖动就会触发此事件
+        console.log('drag...')
+    })
+    .on('dragend',function(){
+        //拖拽结束时触发此事件，鼠标松开时
+        console.log('dragend');
+    })
+
+    //容器元素
+    $('.container')
+    .on('dragenter',function(){
+        //被拖动元素进入容器时触发
+        console.log('dragentr...')
+    })
+    .on('dragleave',function(){
+        //被拖动元素离开容器时触发
+        console.log('dragleave...')
+    })
+    
+    .on('dragover',function(ev){
+        //触发非常频繁
+        console.log('dragover...');
+        //元素的放置需要阻止此事件的默认行为
+        ev.preventDefault()
+    })
+    .on('drop',function(ev){
+        
+        //把被拖拽元素追加到容器元素里面 使其放置
+        $('.container').append($('.target'))
+        console.log('drop...')
+    })
+    .on('drag',function(){
+        //容器中的被拖动元素拖动时触发 当被拖动元素不再容器中时被拖动元素拖动时不会触发该事件
+        console.log('drag...')
+    })
+    .on('dragend',function(){
+        console.log('dragend...')
+    })
+</script>
+</html>

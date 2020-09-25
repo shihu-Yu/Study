@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>070-弹性布局练习-圣杯布局.html</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		body{
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+		}
+		.hd{
+			height: 10vh;
+			background-color: tomato;
+		}
+		section{
+			display: flex;
+			flex:1;
+			flex-direction: row;
+		}
+		.left{
+			width: 10vw;
+			background-color: blue;
+		}
+		.main{
+			flex:1;
+			background-color: white;
+		}
+		.aside{
+			width: 10vw;
+			background-color: yellow;
+		}
+		footer{
+			height: 10vh;
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<header class="hd">header</header>
+	<section>
+		<div class="left">nav</div>
+		<div class="main">main</div>
+		<div class="aside">aside</div>
+	</section>
+	<footer>footer</footer>
+</body>
+</html>

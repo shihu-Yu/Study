@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>086-动画练习-加载动画.html</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		.wrap{
+			width: 300px;
+			height: 300px;
+			border:1px solid black;
+			margin:50px auto;
+			position: relative;
+		}
+		.box{
+			width:5px;
+			height: 20px;
+			margin:50px auto;
+			height: 20px;
+			background-color: maroon;
+			animation-name: donghua
+			anima;
+			transform: scale(1,1);
+			animation:donghua 0.3s linear 0s infinite alternate-reverse;
+		}
+		.box:before,.box:after{
+			content:'';
+			width:5px;
+			height: 20px;
+			background-color: maroon;
+			position: absolute;
+		}
+		.box:before{
+			position: absolute;
+			top: 0px;
+			left: 10px;
+			transform: scale(1,0.5);
+			animation:donghua 0.3s linear 0.3s infinite alternate-reverse;
+		}
+		.box:after{
+			position: absolute;
+			top: 0px;
+			left: -10px;
+			transform: scale(1,0.7);
+			animation:donghua 0.3s linear 0.5s infinite alternate-reverse;
+		}
+		@keyframes donghua{
+			from{
+				opacity: 0.3;
+				transform: scale(1,0.3);
+			}
+			to{
+				opacity: 1;
+				transform: scale(1,1);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="box"></div>
+	</div>
+</body>
+</html>

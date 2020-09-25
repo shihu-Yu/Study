@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>间接选中</title>
+	<style type="text/css">
+	/*.间接选中(通过继承选中)
+	优先级根据就近原则,离被选中的元素越近优先级越高*/
+		.father{
+			color: red
+		}
+		.son{
+			color: blue
+		}
+		p{
+			color: maroon
+		}
+	</style>
+</head>
+<body>
+	<div class="father" id="father">
+		<div class="son" id="son">
+			<p>YourBones</p>
+		</div>
+	</div>
+</body>
+</html>

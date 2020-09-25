@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>034-盒模型分类.html</title>
+	<style type="text/css">
+	/*标准盒模型计算
+		标准盒模型计算
+		内容的宽和高
+		内容的宽:通过width属性设置的值
+		内容的高:通过height属性设置的值
+		元素的宽和高
+		元素的宽：左边框＋左内边距＋内容的宽度＋右内边距＋右边框
+		元素的高：上边框＋上内边距＋内容的高度＋下内边距＋下边框
+		元素空间的宽和高
+		元素空间的宽：左外边距＋左边框＋左内边距＋内容的宽度＋右内边距＋右边框＋右外边距
+		元素空间的高：上外边距＋上边框＋上内边距＋内容的高度＋下内边距＋下边框＋下外边距
+		*/
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		.box{
+			width:200px;
+			height: 200px;
+			background: gray;
+			padding: 20px;
+			border:30px solid black;
+			margin: 50px;
+			box-sizing: border-box;
+		}
+		/*IE盒模型计算
+		内容的宽和高
+		内容的宽:通过width属性设置的值 - 左边框 - 左内边距 - 右内边距 - 右边框
+		内容的高:通过height属性设置的值 - 上边框 - 上内边距 - 下内边距 - 下边框
+		元素的宽和高
+		元素的宽:通过width属性设置的值
+		元素的高:通过height属性设置的值
+		元素空间的宽和高
+		元素空间的宽:左外边距＋通过width属性设置的值＋右外边距
+		元素空间的高:上外边距＋通过height属性设置的值＋下外边距
+		*/
+		.box1{
+			width:200px;
+			height: 200px;
+			background: gray;
+			padding: 20px;
+			border:30px solid black;
+			margin: 50px;
+			box-sizing: content-box;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">IE盒模型</div>
+	<div class="box1">标准盒模型</div>
+</body>
+</html>

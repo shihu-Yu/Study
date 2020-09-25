@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>后代选择器</title>
+	<style type="text/css">
+		.father .son #ls{
+			color: rgb(110,220,230);
+		}
+		/*选择器和选择器之间至少有一个空格,一般就打一个空格
+
+		除了标签之外,还可以写其他的选择器,比如类,ID
+
+		后代选择器可以一直写下去
+
+		后代选择器不仅仅可以找到它的直接后代(儿子),同时还可以找到它的孙子,重孙子。。。。。*/
+	</style>
+</head>
+<body>
+	<div class="father">
+		<ul>
+			<li class="son">
+				选择器1
+			</li>
+			<li class="grandson">选择器2</li>
+		</ul>
+	</div>
+	<div class="father">
+		<dl>
+			<dt class="son">将军
+				<div class="grandson">
+				王五	
+				</div>
+				<div id="ls">李四</div>	
+			</dt>
+		</dl>
+	</div>
+</body>
+</html>

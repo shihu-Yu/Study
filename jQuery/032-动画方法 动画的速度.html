@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画的速度</title>
+    <style>
+        *{
+            padding:0 ;
+            margin: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: cadetblue;
+            margin-top: 10px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">开始动画</button>
+    <div></div>
+
+    <div></div>
+    <div></div>
+</body>
+<script src="./jQuery/jquery1.12.4.js"></script>
+<script>
+    $('button').on('click',function(){
+        $('div').eq(0).animate({
+            width:500
+        },1000,function(){
+            console.log("div1 animate done")
+        })
+        $('div').eq(1).animate({
+            width:500
+        },1000,'swing',function(){
+            console.log("div1 animate done")
+        })
+        $('div').eq(2).animate({
+            width:500
+        },1000,'linear',function(){
+            console.log("div1 animate done")
+        })
+    })
+    /*
+    动画在回调函数前面可以指定速度,默认是swing,可用参数linear
+    */
+
+</script>
+</html>

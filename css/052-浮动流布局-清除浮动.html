@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>052-浮动流布局-清除浮动.html</title>
+	<style type="text/css">
+	/*给第二个盒子添加clear属性来清除前面元素浮动带来的影响
+	通过clear属性清除浮动会导致第一个盒子的margin-bottom和第二个盒子的margin-top失效,第二个盒子的margin-top失效是因为margin的值传递
+	1.clear属性的取值有:left|right|both|none(默认)
+	2.clear属性的意思是不让自己的子元素找前面浮动的元素
+	*/
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.father1{
+			background-color: red
+		}
+		.box1{
+			width: 50px;
+			height: 50px;
+			background-color: green;
+			float: left;
+		}
+		.father2{
+			background-color: blue;
+			clear:both;
+		}
+		.box2{
+			width: 50px;
+			height: 50px;
+			background-color: maroon;
+			float: left;
+		}						
+	</style>
+</head>
+<body>
+	<div class="father1">
+		<div class="box1">1</div>
+		<div class="box1">2</div>
+		<div class="box1">3</div>
+	</div>
+	<div class="father2">
+		<div class="box2">1</div>
+		<div class="box2">2</div>
+		<div class="box2">3</div>
+	</div>
+</body>
+</html>

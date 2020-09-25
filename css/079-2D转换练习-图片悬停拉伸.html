@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>079-2D转换练习-图片悬停拉伸.html</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			margin:50px auto;
+			border:10px solid maroon;
+			overflow: hidden;
+		}
+		img{
+			width: 100%;
+			height: 100%
+			transform: all 0.5s;
+		}
+		div:hover img{
+			transform: scale(1.2,1.2);
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<img src="./6.jpg">
+	</div>
+</body>
+</html>

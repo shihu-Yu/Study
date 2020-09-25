@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>065-容器属性-换行.html</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.contenter{
+			width: 600px;
+			height:600px;
+			border: 1px solid black;
+			display: flex;
+			margin: 50px auto;
+			/*flex-direction: row;*/
+			/*flex-wrap: nowrap;*/
+			/*flex-wrap: wrap;*/
+			/*flex-wrap: wrap-reverse;*/
+			flex-direction: column;
+			/*flex-wrap: nowrap;*/
+			/*flex-wrap: wrap;*/
+			flex-wrap: wrap-reverse;
+		}
+		/*flex-wrap: nowrap |  wrap | wrap-reverse；   
+		取值	说明
+		nowrap	默认值，不换行,如果主轴是x轴,元素的宽度按照指定宽的比例从新计算,如果主轴是y轴,元素的高度按照指定高的比例从新计算
+		wrap	换行,如果主轴是x轴,第一行在上方,如果主轴是y轴,第一行在左边
+		wrap-reverse	换行,如果主轴是x轴,第一行在下方,如果主轴是y轴,第一行在右边
+		*/
+		.item{
+			width: 100px;
+			height: 100px;
+			border:1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<div class="contenter">
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+	</div>
+</body>
+</html>

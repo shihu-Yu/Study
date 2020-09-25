@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>不区分类型的序选择器</title>
+	<style type="text/css">
+		/*p:first-child{
+			color: green
+		}
+		p:last-child{
+			color: maroon
+		}
+		p:nth-child(4){
+			color: red
+		}*/
+		p:nth-child(2n+0){
+			color: blue
+		}
+		P:nth-last-child(3n+0){
+			color:#228b22;
+		}
+		p:only-child{
+			color: green
+		}
+		h2:nth-child(2){
+			color:rgba(200,220,230,0.8);
+			font-size:2em
+		}
+		p:nth-child(odd){
+			color: yellow
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<p>我是1</p>
+		<h2>我是h2</h2>
+		<p>我是3</p>
+		<p>我是4</p>
+		<p>我是5</p>
+		<p>我是6</p>
+		<span>span</span>
+	</div>
+	<div>
+		<p>
+			p1
+		</p>
+	</div>
+	<!--first-child找到同级别的第一个元素，last-child找到同级别的最后一个元素
+		nth-chid(n)找到第n个元素，n可以是具体数字也可以是odd奇数也可以是even偶数或者是xn+y例如p:nth-child(3n+0)
+
+	-->
+</body>
+</html>

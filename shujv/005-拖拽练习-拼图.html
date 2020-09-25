@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拼图</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            
+        }
+        .container{
+            width: 600px;
+            height: 600px;
+            margin: 50px auto;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .container li{
+            list-style: none;
+            height: 200px;
+            width: 200px;
+        }
+        .container li img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <ul class="container">
+        <li class="target" draggable="true">
+            <img src="./images/1.jpg" alt="">
+        </li>
+        <li class="target" draggable="true">
+            <img src="./images/2.jpg" alt="">
+        </li>
+        <li class="target" draggable="true">
+            <img src="./images/3.jpg" alt="">
+        </li>
+        <li class="target" draggable="true">
+            <img src="./images/4.jpg" alt="">
+        </li>
+        <li class="target" draggable="true">
+            <img src="./images/5.jpg" alt="">
+        </li>
+        <li class="target" draggable="true">
+            <img src="./images/6.jpg" alt="">
+        </li>
+        <li class="target" draggable="true">
+            <img src="./images/7.jpg" alt="">
+        </li>
+        <li class="target" draggable="true">
+            <img src="./images/8.jpg" alt="">
+        </li>
+        <li class="target" draggable="true">
+            <img src="./images/9.jpg" alt="">
+        </li>
+    </ul>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    var targetElem = null
+    $('.container')
+    .on('dragstart','li',function(){
+        //保存自身的元素节点
+        targetElem = this
+    })
+    .on('drop','li',function(){
+        if(targetElem != this){
+            var $containerElem = $(this)
+            var $targetElem = $(targetElem)
+
+            //保存图片
+            var tempHtml = $containerElem.html()
+            //交换图片
+            $containerElem.html($targetElem.html())
+            $targetElem.html(tempHtml)
+        }
+    })
+    .on('dragover','li',function(ev){
+        //删除默认行为
+        ev.preventDefault()
+    })
+</script>
+</html>

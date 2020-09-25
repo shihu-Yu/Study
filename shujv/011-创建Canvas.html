@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建Canvas.html</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        canvas{
+            border: 1px solid blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <!-- 通过canvas标签来设置画布的大小,视口默认的宽高是300p x 150px。 -->
+    <canvas></canvas>
+
+    <!-- 我们也可以通过给标签添加width和height属性来设置画布宽高 -->
+    <canvas width="200" height="200"></canvas>
+
+    <!-- 也可以通过js调用相关api来设置画布宽高，这也是我们推荐的做法。 -->
+    <canvas id="canvas"></canvas>
+</body>
+<script>
+    // 也可以通过js调用相关api来设置画布宽高
+    var canvas = document.getElementById('canvas')
+    canvas.width = 400
+    canvas.height = 300
+</script>
+</html>

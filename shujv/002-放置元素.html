@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>放置元素</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            width: 400px;
+            height: 400px;
+            background-color: darkgray;
+        }
+        .drag{
+            width: 100px;
+            height: 100px;
+            background-color: cadetblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="container" class="container"></div>
+    <div class="drag" draggable="true"></div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    //容器元素
+    $('.container')
+    //向容器元素绑定事件
+    .on('drop',function(){
+        console.log('drop...')
+        //把被拖拽元素追加到容器元素里面 使其放置
+        $('.container').append($('.drag'))
+    })
+    //阻止dragover的，默认行为使元素可以被放置，否则无法放置元素
+    .on('dragover',function(ev){
+        ev.preventDefault()
+    })
+</script>
+</html>

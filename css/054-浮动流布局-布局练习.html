@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>054-浮动流布局-布局练习</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.box{
+			width: 960px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.clearfix:after{
+			content: '';
+			display: block;
+			clear: both;
+			visibility: hidden;
+			height: 0;
+		}
+		.clearfix{
+		    *zoom:1;
+		}
+		header{
+			margin-bottom: 10px;
+		}
+		section{
+			margin-bottom: 10px;
+		}
+		h1{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			float: left;
+		}
+		.user-into{
+			width: 200px;
+			height: 50px;
+			background-color: tomato;
+			float: right;
+		}
+		header nav{
+			width: 800px;
+			height: 50px;
+			background-color: purple;
+			float: right;
+		}
+		section .left-in{
+			float: left;
+		}
+		section .right-in{
+			width: 150px;
+			height: 500px;
+			background-color: skyblue;
+			float: right;
+		}
+		.area-right{
+			width: 100px;
+			height: 450px;
+			background-color: tomato;
+			float: right;
+		}
+		.in-left{
+			float: left;
+		}
+		.left-top{
+			margin-bottom: 10px;
+		}
+		.in-top{
+			width: 680px;
+			height: 220px;
+			background-color: yellow;
+			margin-bottom: 10px;
+		}
+		.in-bottom{
+			width: 680px;
+			height: 220px;
+			background-color: yellow;
+		}
+		section .left-bottom{
+			width: 800px;
+			height: 40px;
+			background-color: red;
+		}
+		footer{
+			height: 50px;
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<header class="box clearfix">
+		<h1 class="logo"></h1>
+		<div class="user-into"></div>
+		<nav></nav>
+	</header>
+	<section class="box clearfix">
+		<div class="left-in">
+			<div class="left-top clearfix">
+				<div class="in-left">
+					<div class="in-top"></div>
+					<div class="in-bottom"></div>
+				</div>
+				<div class="area-right"></div>
+			</div>
+			<div class="left-bottom"></div>
+		</div>
+		<div class="right-in"></div>
+	</section>
+	<footer class="box">
+		<div class=""></div>
+	</footer>
+</body>
+</html>

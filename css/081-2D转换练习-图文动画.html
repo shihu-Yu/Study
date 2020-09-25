@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>081-2D转换练习-图文动画.html</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		.wrap{
+			width: 200px;
+			height: 200px;
+			border:10px solid skyblue;
+			margin:50px auto;
+			position: relative;
+			overflow: hidden;
+			perspective: 500px;
+		}
+		img{
+			width: 100%;
+			height: 100%;
+			transition: all 0.5s;
+		}
+		.wrap:hover img{
+			transform: translateY(0);
+			transform: translateY(-100%);
+		}
+		.wrap .nr{
+			height: 200px;
+			height: 200px;
+			padding: 50px 15px 20px 10px;
+			text-align: center;
+			position: absolute;
+			top:0;
+			left:0;
+			z-index: -1;
+			transform: rotateX(80deg);
+			transition: all 0.5s;
+			opacity:0;
+		}
+		.wrap:hover .nr{
+			transform: rotateX(0deg);
+			opacity:1;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<img src="./6.jpg">
+		<div class="nr">
+			<h3>高圆圆</h3>
+			<p>高圆圆，原名高园园，中国内地影视女演员、模特。</p>
+		</div>
+	</div>
+</body>
+</html>

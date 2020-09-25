@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>059-qq邮箱登陆界面练习</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		header{
+			width: 1598px;
+			height: 62px;
+			background-color: #eff4fa;
+		}
+		.clearfix:after{
+			content: '';
+			display: block;
+			clear: both;
+			visibility: hidden;
+			height: 0;
+		}
+		.clearfix{
+			*zoom:1;
+		}
+		.sx{
+			padding:0 5px;
+			color: #b6b6b6;
+		}
+		header .hd{
+			width: 1522px;
+			height: 62px;
+			padding:0 40px;
+			float: left;
+		}
+		header .hd .logo{
+			height: 62px;
+			width: 188px;
+			background-image: url(./qqmail_logo.png);
+			background-repeat: no-repeat;
+			background-size: 188px 33px;
+			margin-top: 14px;
+			margin-bottom: 14px;
+			clear: both;
+			float:left;
+		}
+		header .hd .nav{
+			float: right;
+		}
+		header .hd .nav li{
+			list-style: none;
+			float: left;
+			line-height: 62px;
+		}
+		li:hover{
+			cursor: pointer;
+			text-decoration: underline;
+		}
+		header .hd  li .line{
+			text-decoration: none;
+			color: #1d5494;
+			font-size: 12px;
+		}
+		section .left{
+			width: 520px;
+			height: 390px;
+			margin-top: 73px;
+			margin-left: 300px;
+			float: left;
+			background-image: url(../qq-mail/qq_mail_bg.jpg);
+		}
+		section .right{
+			width: 337px;
+			height: 390px;
+			background-color: maroon;
+			float: right;
+			margin-top: 73px;
+			margin-right: 300px;
+		}
+		section .right .hd{
+			width: 285px;
+			height: 54px;
+			margin-left: 28px;
+			margin-right: 28px;
+		}
+		footer{
+
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="hd" clearfix>
+			<h1 class="wrap">
+				<a class="logo" href="#"></a>
+			</h1>
+			<ul class="nav" clearfix>
+				<li>
+					<a class="line" href="#">基本版</a><span class="sx">|</span>
+				<li>
+					<a class="line href="#">English</a><span class="sx">|</span>
+				</li>
+				<li>
+					<a class="line href="#">手机版</a><span class="sx">|</span>
+				</li>
+				<li>
+					<a class="line href="#">企业邮箱</a>
+				</li>
+			</ul>
+		</div>
+	</header>
+	<section>
+		<div class="left">
+			<a class="bg" href="#"></a>
+		</div>
+		<form>
+			<div class="right">
+				<div class="hd">
+					<span class="btn">微信登陆</span>
+					<span class="btn">QQ登陆</span>
+				</div>
+			</div>
+		</form>
+	</section>
+	<footer></footer>
+</body>
+</html>

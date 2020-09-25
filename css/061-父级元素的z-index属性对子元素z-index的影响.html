@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>061-父级元素的z-index属性对子元素z-index的影响.html</title>
+	<style type="text/css">
+	/*父级元素的z-index属性会影响到子元素的z-index,子元素的z-index属性最终的值是所有父级元素中最顶层父级元素的z-index值
+	父级元素大的在上面，优先显示。
+	*/
+		*{
+			padding: 0;
+			height: 0;
+		}
+		.father1{
+			width: 200px;
+			height:200px;
+			background-color: maroon;
+			position: relative;
+			z-index: 1;
+		}
+		.son1{
+			width: 50px;
+			height: 50px;
+			background-color: blue;
+			position: absolute;
+			left: 240px;
+			top: 260px;
+			z-index: 20;
+		}
+		.father2{
+			width: 200px;
+			height: 200px;
+			background-color: skyblue;
+			position: relative;
+			z-index: 3;
+		}
+		.son2{
+			width: 50px;
+			height: 50px;
+			background-color: green;
+			position: absolute;
+			left: 200px;
+			top: 100px;
+			z-index: 10;
+		}
+	</style>
+</head>
+<body>
+	<div class="father1">
+		<div class="son1">s1</div>
+	</div>
+	<div class="father2">
+		<div class="son2">s2</div>
+	</div>
+</body>
+</html>

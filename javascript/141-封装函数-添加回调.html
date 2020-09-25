@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>封装函数-添加回调</title>
+	<style type="text/css">
+		*{
+	    margin: 0;
+	    padding: 0;
+	}
+	.container{
+	    width: 400px;
+	    margin: 100px auto;
+	}
+	.container div{
+	    width: 100px;
+	    height: 100px;
+	    line-height: 100px;
+	    background-color: #f00;
+	    margin-top: 10px;
+	    opacity: 0.1;
+	    text-align: center;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+        <div id="box1">变宽</div>
+        <div id="box2">变高</div>
+        <div id="box3">变红</div>
+    </div>
+</body>
+<script type="text/javascript">
+	var elem1 = document.getElementById('box1') 
+	var elem2 = document.getElementById('box2') 
+	var elem3 = document.getElementById('box3') 
+
+	var speed = 0
+	var temer = 0
+	function animate(elem,attr,target){
+		clearInterval(elem.timer)
+		elem.timer = setInterval(function(){
+			var current = parseFloat(getComputedStyle(elem,false)[attr])
+			if(attr == 'opacity'){
+				current = Math.round(current * 100)
+			}
+			if(current > target){
+				speed = -5
+			}else{
+				speed = 5
+			}
+			if(Math.abs(current - target) < Math.abs(speed)){
+				if(attr == 'opacity'){//这里的attr == 'opacity' 这里的opacity一定要加引号 表示参数名
+					elem.style.opacity = target / 100
+				}else{
+					elem.style[attr]= target + 'px'
+				}
+
+				clearInterval(elem.timer)
+				typeof callback == 'function' ? callback() : null//回调函数
+
+				
+		}else{
+			if(attr == 'opacity'){
+					elem.style.opacity = (speed + current) / 100 
+				}else{
+					elem.style[attr] = current + speed + 'px'
+				}
+			}
+		},50)
+	}
+		elem1.onmouseover = function(){
+			animate(elem1,'width',300)
+		}
+		elem2.onmouseover = function(){
+			animate(elem2,'height',300)
+		}
+		elem3.onmouseover = function(){
+			animate(elem3,'opacity',100)
+		}
+
+
+</script>
+</html>

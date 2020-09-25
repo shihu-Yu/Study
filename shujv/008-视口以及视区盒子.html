@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视口以及视区盒子</title>
+    <style>
+        svg{
+            border: 1px solid blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <!-- 通过svg标签来设置视口的大小,视口默认的宽高是300p x 150px -->
+    <!--没有设置视区盒子-->
+    <svg width="600" height="400">
+        <rect width="30" height="20" />
+    </svg>
+    <!-- 在svg标签中添加viewBox属性,格式是viewBox = 'x y width height'   其中宽高要是同比例  -->
+    <!--设置视区盒子 设置之后 rect的大小   width= 30* (60/600) = 300 高度同理 -->
+    <svg width="600" height="400" viewBox=" 0 0 60 40">
+        <rect width="30" height="20" />
+    </svg>
+</body>
+</html>

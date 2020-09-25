@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>075-过度练习-html</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		.box{
+			width: 200px;
+			border:1px solid black;
+			border-radius: 4px;
+			margin:50px auto;
+			box-sizing: border-box;
+			position: relative;
+			overflow: hidden;
+		}
+		}
+		h3{
+			line-height: 60px;
+			text-align: center;
+
+		}
+		.box .bd{
+			width: 200px;
+			overflow: hidden;
+		}
+		.box .image{
+		    width: 200px;
+		    height: 200px;
+		    position: absolute;
+		    top:60px;
+		    left:0;
+		    overflow: hidden;
+		}        
+		.box:hover .image{
+		    top:260px;
+		}
+		.box .image {
+		    transition: all 0.5s;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<header><h3>高圆圆</h3></header>
+		<div class="bd">高圆圆，原名高园园，1979年10月5日出生于北京市丰台区，祖籍河北唐山，中国内地影视女演员、模特。1996年，被广告公司发掘，随后拍摄大量的商业广告，在广告圈中崭露头角。1997年，主演个人首部大银幕作品《爱情麻辣烫》，从此开始了她
+		</div>
+		<div class="image">
+		<img src="http://www.chenniantao.com/media/markdownx/7b848d00-6022-40d2-8b54-79939ea4ee82.jpg">
+		</div>
+	</div>
+</body>
+</html>			

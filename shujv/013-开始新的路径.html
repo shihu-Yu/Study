@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开始新的路径</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        canvas{
+            border: 1px solid blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+</body>
+<script>
+    var oCanvas = document.getElementById('canvas')
+    oCanvas.width = 600
+    oCanvas.height = 400
+    var ctx = oCanvas.getContext('2d')
+    ctx.moveTo(0,0)
+    ctx.lineTo(100,100)
+    ctx.strokeStyle = 'maroon'
+    ctx.lineWidth = 5
+    ctx.stroke()
+
+//清空原有的路径，开始新的路径,如果不清除原有的路径，当设置新路径的颜色时，原有路径的颜色也会发生改变
+    ctx.beginPath()
+
+
+    ctx.moveTo(300,0)
+    ctx.lineTo(400,100)
+    ctx.strokeStyle = '#fe5'
+    ctx.lineWidth = 5
+    ctx.stroke()
+
+    ctx.beginPath()
+
+
+    ctx.moveTo(100,100)
+    ctx.lineTo(400,100)
+    ctx.strokeStyle = 'green'
+    ctx.lineWidth = 5
+    ctx.stroke()
+
+
+</script>
+</html>

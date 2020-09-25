@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>渲染上下文</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        canvas{
+            border: 1px solid blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+</body>
+<script>
+    // 也可以通过js调用相关api来设置画布宽高
+    var canvas = document.getElementById('canvas')
+    canvas.width = 600
+    canvas.height = 400
+
+    //通过getContext()方法   来获取canvas的渲染上下文环境
+    var ctx = canvas.getContext('2d')
+
+    //指定起始坐标
+    ctx.moveTo(0,0)
+
+    //指定终点坐标
+    ctx.lineTo(200,200)
+
+    //指定描边的样式
+    ctx.strokeStyle = 'maroon'
+
+    //指定线条的宽度
+    ctx.lineWidth = 5
+
+    //描边路径
+    ctx.stroke()
+</script>
+</html>

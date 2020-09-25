@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>042-盒模型练习.html</title>
+	<style type="text/css">
+		*{
+			padding:0;
+			margin: 0;
+		}
+		.wrap{
+			width: 280px;
+			margin: 100px auto;
+		}
+		.hd{
+			border-top: 2px solid #ececec;
+			border-bottom: 1px solid #ccc;
+		}
+		.hd h3{
+			border-top: 2px solid #069;
+			width: 100px;
+			line-height: 20px;
+			margin-top: -2px;
+			padding: 6px 0;
+			font-size: 15px;
+			color:#069;
+		}
+		.hd h3 p{
+			font-size: 5px;
+			color: #ececec;
+		}
+		li{
+			width: 280px;
+			font-size: 20px;
+			font-color:black;
+			vertical-align: middle;
+			border-bottom: 1px dotted #333;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis; 
+			padding-top: 2px;
+			padding-bottom: 4px;
+		}
+		.bd li a{
+			text-decoration: none;
+			font-size: 10px;
+			color: #333;
+		}
+		.bd li a:hover{
+			text-decoration: underline;
+			color: #900;
+		}
+		.bd li:last-child{
+			border-bottom: none;
+		}
+		.bd li:before{
+			content: "";
+			display:inline-block;
+			width: 4px;
+            height: 4px;
+            background-color: #069;
+            vertical-align: middle;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="hd">
+			<h3>即使新闻
+				<p>INSTANT NEWS</p>
+			</h3>
+		</div>
+		<div class="bd">
+			<ul>
+				<li>
+					<a href="#">疫情之下 韩移动运营商提供更多虚拟现实服务</a>
+				</li>
+				<li>
+					<a href="#">疫情之下 韩移动运营商提供更多虚拟现实服务</a>
+				</li>
+				<li>
+					<a href="#">疫情之下 韩移动运营商提供更多虚拟现实服务</a>
+				</li>
+				<li>
+					<a href="#">疫情之下 韩移动运营商提供更多虚拟现实服务</a>
+				</li>
+				<li>
+					<a href="#">疫情之下 韩移动运营商提供更多虚拟现实服务</a>
+				</li>
+				<li>
+					<a href="#">疫情之下 韩移动运营商提供更多虚拟现实服务</a>
+				</li>
+				<li>
+					<a href="#">疫情之下 韩移动运营商提供更多虚拟现实服务</a>
+				</li>
+				<li>
+					<a href="#">疫情之下 韩移动运营商提供更多虚拟现实服务</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>085-动画的其他属性.html</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		.box1{
+			width: 50px;
+			height: 50px;
+			background-color: maroon;
+			animation-name:donghua;
+			animation-duration: 1s;
+			animation-timing-function:linear;/*动画的执行速度*/
+			animation-delay: 1s;/*动画的延迟执行*/
+			animation-iteration-count: infinite;/*animation-iteration-count: 具体的数字(默认是1)|infinite(无限循环); */
+			animation-direction: alternate;/*animation-direction: normal(默认状态不执行往返动画)|alternate(执行往返动画);*/
+		}
+		@keyframes donghua{
+			from{
+				width: 50px;
+			}
+			to{
+				width: 300px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+</body>
+</html>

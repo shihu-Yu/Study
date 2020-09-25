@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>076-修改旋转基点.html</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		ul{
+			width: 200px;
+			height: 200px;
+			border:1px solid black;
+			background-color: white;
+			margin:300px auto;
+			list-style: none;
+			position: relative;
+		}
+		li{
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			margin-bottom: 10px;
+			transform-origin: right top;
+		}
+		.box1{
+			background-color: red;
+			transform: rotate(60deg) ;
+		}
+
+		.box2{
+			background-color: green;
+			transform: rotate(90deg) ;
+		}
+		.box3{
+			background-color: blue;
+			transform: rotate(120deg) ;
+		}
+		/*transform-origin: 水平方向移动距离 垂直方向移动距离;
+		说明
+
+		旋转基点就是以哪个点为参考点进行旋转
+
+		默认情况下所有的元素都是以自己的中心点作为参考来旋转的
+
+		移动距离可以是具体的像素,百分比,和关键字,关键字在水平方向上有left center right,在垂直方向上有top center bottom,可以参考background-position属性的设置
+
+		移动基点的参考点是元素的左上角顶点
+		*/
+	</style>
+</head>
+<body>
+	<ul>
+		<li class="box1"></li>
+		<li class="box2"></li>
+		<li class="box3"></li>
+	</ul>
+</body>
+</html>

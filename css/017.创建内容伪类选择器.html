@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>创建内容伪类选择器</title>
+	<style type="text/css">
+		div:after{
+			content:"添加到后面的文字";
+			color:maroon;
+		}
+		div:before{
+			content: "添加到前面的文字"
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<p>我是原来的文字</p>
+	</div>
+</body>
+</html>

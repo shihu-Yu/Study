@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>057-相对定位绝对定位练习-轮播图.html</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		.wrap{
+			width: 800px;
+			height: 400px;
+			margin: 50px auto;
+			border:2px solid green;
+			position:relative;
+		}
+		img{
+			width: 100%;
+			height: 100%;
+		}
+		.som{
+			width: 40px;
+			background-color: rgba(0,0,0,0.5);
+			position: absolute;
+			top: 50%;
+			margin-top: -40px;
+			color: white;
+			text-align: center;
+			font-size: 20px;
+			line-height: 80px;
+			user-select: none;
+			cursor: pointer;
+		}
+		.som:hover{
+			background-color: rgba(0,0,0,0.2);
+
+		}
+		.box1{
+			left: 0;
+		}
+		.box2{
+			right: 0;
+		}
+		.btns{
+			list-style: none;
+			position: absolute;
+			right: 20px;
+			bottom: 20px;
+		}
+		.btns li{
+			float: right;
+		    width: 30px;
+		    line-height: 30px;
+		    text-align: center;
+		    background-color: rgba(0,0,0,0.5);
+		    margin-right: 10px;
+		    color: #fff;
+		    border-radius: 50%;
+		    cursor: pointer;
+		    user-select: none; 
+		}
+		li:hover{
+			 background-color: rgba(0,0,0,0.2);
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<img src="../test/5.jpg">
+		<span class="box1 som">&lt;</span>
+		<span class="box2 som">&gt;</span>
+		<ul class="btns">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>066-设置交叉轴的对齐方式(单行).html</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.contenter{
+			width: 600px;
+			height: 600px;
+			border: 1px solid black;
+			display: flex;
+			flex-wrap: nowrap;
+			/*flex-direction: row;*/
+			/*align-items: flex-end;*/
+			/*align-items: center;*/
+			/*align-items:stretch;*/
+			flex-direction: column;
+			/*align-items: flex-start;*/
+			/*align-items: flex-end;*/
+			/*align-items: center;*/
+			/*align-items: stretch;*/
+			/*stretch	默认值，拉伸,如果交叉轴是x轴并且项目未设置宽度或设为auto,元素的宽将占满整个容器的宽度,如果交叉轴是y轴并且项目未设置高度或设为auto,元素的高将占满整个容器的高度*/
+			justify-content: center;
+			align-items: center;
+		}
+		.item{
+			width: 100px;
+			height: 100px;
+			border:1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<div class="contenter">
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+	</div>
+</body>
+</html>

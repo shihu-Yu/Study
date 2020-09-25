@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>013区分类型序选择器</title>
+	<style type="text/css">
+		/*p:first-of-type{
+			color: red
+		}
+		p:last-of-type{
+			color: yellow
+		}*/
+		/*序选择器的排序规则只针对同级别的元素起作用，即只有兄弟元素才算数
+		first-of-type last-of-type nth-of-type(n) only-of-type
+		nth-last-of-type(n)表示倒数第几个
+		不区分类型和区分类型中的类型指的是被选择器是否选中
+
+		选择器可以是标签也可以是类,也可以是ID,但是写ID没有意义,因为ID本身就是唯一的
+
+		选择器和冒号:之间不能有空格,可以理解为这是一个交集选择器的写法
+
+		资料下载
+		*/
+		p:nth-of-type(even){
+			color:green
+		}
+		p:nth-of-type(3){
+			color:blue
+		}
+		p:only-of-type{
+			color:red
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<h1>h1</h1>
+		<p>我是1</p>
+		<h2>我是h2</h2>
+		<p>我是3</p>
+		<p>我是4</p>
+		<p>我是5</p>
+		<p>我是6</p>
+		<span>span</span>
+	</div>
+	<div>
+		<p>p1</p>
+		<h3>h3</h3>
+	</div>
+</body>
+</html>
