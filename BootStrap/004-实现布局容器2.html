@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实现容器布局2</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        @media screen and (max-width:767px){
+            .container{
+                width: 100%;
+            }
+        }
+        @media screen and (min-width:767px) and (max-width:991px) {
+            .container{
+                width: 750px;
+            }
+        }
+        @media screen and (min-width:992px) and (max-width:1199px) {
+            .container{
+                width: 970px;
+            }
+        }
+        @media screen and (min-width:1200px){
+            .container{
+                width: 1170px;
+            }
+        }
+        .container{
+            margin-left: auto;
+            margin-right: auto;
+            height: 50px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+</body>
+</html>

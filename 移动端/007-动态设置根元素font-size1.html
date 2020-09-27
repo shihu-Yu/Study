@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义方法</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            
+        }
+        img{
+            width: 5rem;
+        }
+        img{
+            font-size:0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="./images/1.jpg" alt="">
+        <h1>你是我的眼</h1>
+    </div>    
+</body>
+    <script>
+        ;(function(w,doc){
+            var root = document.getElementsByTagName('html')[0]
+            function refreshFontSize(){
+                var width = doc.body.clientWidth || doc.documentElement.clientWidth
+                var fontSize = width / 10
+                root.style.fontSize = fontSize + 'px'
+            }
+            doc.addEventListener('DOMContentLoaded',refreshFontSize,false)
+            doc.addEventListener('resize',refreshFontSize,false)
+
+        })(window,document)
+    </script>
+</html>

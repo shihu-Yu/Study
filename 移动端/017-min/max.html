@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 只要大于400px就会显示css样式 */
+        /* @media screen and (min-width: 400px) {
+            body{
+                background-color: blue;
+            }
+        } */
+
+        /* 只有小于800px，才会显示css样式 */
+    /* 
+        @media screen and (max-width: 800px) {
+            body{
+                background-color: blue;
+            }
+        }
+         */
+
+            /* 限制范围在500px 和 900px之间 */
+         /* @media screen and (min-width: 500px) and (max-width:900px) {
+            body{
+                background-color: blue;
+            }
+        } */
+
+        /* orientation	移动设备窗口的方向	属性的取值有:portrait(纵向),landscape(横向) */
+        @media screen and (orientation:portrait) {
+            body{
+                background-color: blue;
+            }
+        }
+
+        @media screen and (orientation:landscape) {
+            body{
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>

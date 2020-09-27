@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>像素</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*
+        正常100%时   1个css像素  ==  1个物理像素
+
+         当浏览器放大到200% 时    这时候 1个css像素  ==  2个物理像素
+        
+        当浏览器缩小50%时  这时候   2个css像素 = 1个物理像素
+
+        也就是说当浏览器放大或者缩小时，页面元素的像素并不会发生变化，看到的字体放大缩小只是
+        css像素和物理像素的转化比例发生了变化，因此产生了放大缩小的视觉效果
+         */
+        p{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    
+    <p>你是我的眼</p>
+</body>
+</html>
