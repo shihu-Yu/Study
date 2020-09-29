@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的拓展运算</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 扩展运算符就是三个点   ...
+
+    // 函数调用时把数组转换为参数列表
+    /*
+    let arr = [11,22]
+    function sum(n1,n2){
+        return n1 + n2
+    }
+    console.log(sum(arr[0],arr[1]))//33
+    console.log(sum(...arr))//33
+    */
+
+    function sum(){
+        let total = 0
+        for(let i=0,len=arguments.length;i<len;i++){
+             total += arguments[i]
+        }
+        return total
+    }
+    console.log(sum(1,2,3))//6
+    var arr = [1,2,3]
+    console.log(sum(...arr))//6
+</script>
+</html>

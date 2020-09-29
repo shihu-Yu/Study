@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+    if(true){
+        var a = 123
+    }
+    console.log(a)//输出结果为123
+   
+    if(true){
+        let a = 123
+    }
+    console.log(a);//报错，let是块级作用域在块级外面无法生效  一个大括号就代表一个块
+     
+
+     if(true){
+         var a = 1
+         function getnum(){
+             console.log(a)//输出结果是1 
+         }
+         getnum()
+     }
+     
+     if(true){
+         let a = 1
+         function getnum(){
+             console.log(a)//输出结果是1，因为作用域的影响
+         }
+         getnum()
+     }
+     console.log(a)//报错
+     
+     console.log(a)//undefined 声明变量的提升
+     var a = 1
+     
+     console.log(a)//报错let定义的变量声明不会提升
+     let a = 1
+     
+
+     let a 
+     console.log(a);//undefined
+     
+    
+    var a = 1
+    var a = 2
+    console.log(a)//2
+    
+    let a = 1
+    let a = 2
+    console.log(a)//报错,let定义的变量不能在定义
+    */
+    
+    let a = 1
+    a = 2
+    console.log(a)//2 可以给let定义的变量赋值
+</script>
+</html>

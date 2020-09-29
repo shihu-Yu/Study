@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>const的使用</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+    const a 
+    console.log(a)//报错，const定义的常量必须在开始时赋值
+    
+    const PI = 3.1415926
+    PI = 2
+    console.log(PI);//const 定义的常量不能在被赋值
+    
+    console.log(PI);//报错 const定义的常量没有声明的提升
+    const PI = 3.1415926
+    
+
+    const PI = 3.1415926
+    console.log(3.1415926);//3.1415926
+    */
+
+    //当const定义的常量是个对象时，可以修改对象里面的属性和值，但不可以向对象赋值新的对象
+    const CONFIG = {
+        name:"哈哈哈",
+        username:"hellow",
+        passward:"123123",
+    }
+    console.log(CONFIG)//输出对象 {name: "哈哈哈", username: "hellow", passward: "123123"}
+    CONFIG.env = 'dev'
+    console.log(CONFIG)//{name: "哈哈哈", username: "hellow", passward: "123123", env: "dev"}
+
+    CONFIG = {}
+    console.log(CONFIG)//报错，不能再次赋值一个对象
+</script>
+</html>

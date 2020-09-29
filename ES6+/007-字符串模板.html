@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串模板</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //字符串模板  `字符 ${javascript表达式}`
+
+    //普通字符串
+    let a = 'hellow this is'
+    console.log(a)//hellow this is
+
+    //多行字符串
+    let str = `this a 
+                        dog,he is 7
+             years old           
+        `
+
+    console.log(str)   /*this a 
+                                dog,he is 7
+                    years old           
+        */  
+
+        // 字符串中嵌入javascript表达式
+        var data = ["Tom", "Amy", "Peter"]
+        var html = '';
+        html += '<ul>'
+        for (var i = 0; i < data.length; i++) {
+            html += `<li>${data[i]}</li>`
+        }
+        html += '</ul>'
+        console.log(html)//<ul><li>Tom</li><li>Amy</li><li>Peter</li></ul>    
+
+</script>
+</html>

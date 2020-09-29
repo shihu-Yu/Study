@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的结构赋值</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const options = {
+        a:1,
+        b:2,
+        c:3,
+    }
+
+    // let a1 = options.a, b1 = options.b , c1 = options.c
+    // console.log(a1,b1,c1)//1 2 3
+
+    // 按照对应属性名,把等号右边对象中属性的值赋给等号左边对象中的同名属性
+    // let {a:a1,b:b1,c:c1} = options
+    // console.log(a1,b1,c1);//1 2 3
+
+    // 等号左边对象中的属性的值是真正被赋值的变量名,如果属性的值省略,属性的值和属性的名称相同
+    // let {a:a,b:b,c:c} = options
+    // console.log(a,b,c)//1 2 3
+
+    //如果名称一样可以省略
+    // let{a,b,c} = options
+    // console.log(a,b,c)//1 2 3
+
+    //等号左边对象中的属性名和顺序没有关系,只和右边的属性名称对应
+    // let{a,c,b} = options
+    // console.log(a,b,c)//输出结果还是1 2 3
+
+    //如果等号左边对象中的属性名在等号右边的对象中没有,则为undefined
+    // let { a,b,c,d } = options
+    // console.log(a, b, c, d);//1 2 3 undefined
+
+    // 可以在等号左边设置默认值,当等号右边对象中找不到对应的属性名时默认值生效
+    let { a: a, b: b, c: c, d: d = 4 } = options
+    console.log(a, b, c, d);//1 2 3 4
+
+
+</script>
+</html>

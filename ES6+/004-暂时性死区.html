@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>暂时性死区</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+    暂时性死区 暂时性死区主要是为了减少运行时错误，
+    防止变量或常量在定义之前就使用，从而导致意料之外的错误发生。
+    */
+
+    /*
+    var a = 1
+    if(true){
+        console.log(a)//1
+    }
+    
+    var a = 1
+    if(true){
+        console.log(a)//1
+        var a = 2
+    }
+    */
+
+    /*
+    //暂时性死区
+    var a = 1
+    if(true){
+        //TDZ
+        console.log(a)//报错 Cannot access 'a' before initialization
+        let a = 2
+    }
+    */
+
+    //与上面相同，都是暂时性死区
+    var  b = 2
+    if(true){
+        //TDZ
+        console.log(b)//报错 Cannot access 'b' before initialization
+        const b = 3
+    }
+
+</script>
+</html>
