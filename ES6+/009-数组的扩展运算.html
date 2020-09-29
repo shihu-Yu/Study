@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数组的拓展运算</title>
+    <title>数组的扩展运算</title>
 </head>
 <body>
     
@@ -19,7 +19,7 @@
     }
     console.log(sum(arr[0],arr[1]))//33
     console.log(sum(...arr))//33
-    */
+    
 
     function sum(){
         let total = 0
@@ -31,5 +31,34 @@
     console.log(sum(1,2,3))//6
     var arr = [1,2,3]
     console.log(sum(...arr))//6
+
+    //替代函数的apply方法
+    let arr = [11,22,33,44,55]
+    console.log(Math.max.apply(null,arr))
+    console.log(Math.max(...arr));
+    
+
+    //复制数组
+    let arr1 = [1,23,52,45,11,68]
+    let arr2 = arr1.concat()
+    arr2.push(99)
+    console.log(arr2)
+    // let arr3 = arr2.slice()
+    // arr3.push(99) //会改变原数组
+    // console.log(arr3)
+    let arr4 = [...arr1]
+    arr4.push(88)
+    console.log(arr4)
+    */
+
+    //合并数组
+    let arr1 = [1,2,3]
+    let arr2 = [4,5,6]
+    //原来的语法
+    let arr3 = arr1.concat(arr2)
+    console.log(arr3)
+    //ES6语法
+    let arr4 = [...arr1,...arr2]
+    console.log(arr4)
 </script>
 </html>
