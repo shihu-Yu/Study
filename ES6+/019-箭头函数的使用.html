@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数的使用</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //箭头函数的基本用法 =>
+    /*
+    let fn = (x,y)=>{
+        console.log(x,y)
+        return x + y 
+    }
+    
+    console.log(fn(1,2))
+    // 1 2 
+    // 3
+
+    
+    // 只有返回值的简写
+
+    let fn = (x,y ) => x + y//箭头后面省略了{} 和 return 
+    console.log(fn(1,2))//3
+
+    // 排序函数用箭头函数
+
+    let arr1 = [12,23,456,21,48,36]
+    //以前的写法
+    let arr2 = arr1.sort(function(n1,n2){
+        return n1-n2
+    })
+    console.log(arr2)// [12, 21, 23, 36, 48, 456]
+    //使用箭头函数
+    let arr3 = arr1.sort((n1,n2)=>n1-n2)
+    console.log(arr3)// [12, 21, 23, 36, 48, 456] 
+
+    */
+    //  只有一个参数的简写
+    let fn = x => x + 10  //相当于下面的代码
+
+    // let fn = (x)=>{
+    //     return x + 10
+    // }
+    
+    console.log(fn(10))//20
+
+</script>
+</html>
