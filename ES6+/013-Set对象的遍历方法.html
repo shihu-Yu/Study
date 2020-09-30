@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set对象的遍历方法</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let s = new Set([11,22,33])
+    // keys()	返回键名的遍历器
+    console.log(s.keys())//SetIterator {11, 22, 33}
+    for(let key of s.keys()){
+        console.log(key)
+        //11 
+        //22 
+        //33
+    }
+
+    // values()	返回键值的遍历器
+    for(let val of s.values()){
+        console.log(val)
+        //11 
+        //22 
+        //33
+    }
+
+    // entries()	返回键值对的遍历器
+    for(let entry of s.entries()){
+        console.log(entry)
+        // [11, 11] 
+        // [22, 22] 
+        // [33,33]
+    }
+
+    //forEach(function(value,key)	使用回调函数遍历
+    s.forEach(function(value,key){
+        console.log(value+":"+key)
+        // 11:11
+        // 22:22
+        // 33:33
+    })
+</script>
+</html>

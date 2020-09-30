@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>去重</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let arr = [11,22,33,55,44,33,11,88]
+    let s = new Set(arr)
+    console.log(s)//Set(6) {11, 22, 33, 55, 44,88}
+    console.log([...s])// [11, 22, 33, 55, 44, 88]
+</script>
+</html>

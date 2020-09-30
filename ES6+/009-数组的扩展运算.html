@@ -6,7 +6,10 @@
     <title>数组的扩展运算</title>
 </head>
 <body>
-    
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
 </body>
 <script>
     // 扩展运算符就是三个点   ...
@@ -49,7 +52,7 @@
     let arr4 = [...arr1]
     arr4.push(88)
     console.log(arr4)
-    */
+    
 
     //合并数组
     let arr1 = [1,2,3]
@@ -60,5 +63,23 @@
     //ES6语法
     let arr4 = [...arr1,...arr2]
     console.log(arr4)
+    
+
+    //伪数组转伪真数组
+    let elems = document.querySelectorAll('div')
+    //之前转成伪真数组的方法
+    console.log([].slice.call(elems))//[div, div, div, div]
+    //使用扩展运算
+    console.log([...elems])//[div, div, div, div]
+ 
+
+    //与结构赋值相结合
+    let [a,b,c,d,e] = [1,2,3,4,5]
+    console.log(a,b,c,d,e)//1 2 3 4 5
+       */
+    let [a,...rest] = [1,2,3,4,5]
+    console.log(a)//1
+    console.log(rest)//[2, 3, 4, 5]
+
 </script>
 </html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map的基本使用</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // Map 类似于对象,但键的范围不限于字符串,各种类型的值(包括对象)都可以当作键的数据结构
+
+    // 2. Map对象的生成 let map = new Map()
+    let map = new Map()
+    let obj = {
+        name:'tom',
+        age:18
+    }
+    // map.set(obj,'hahaha')
+    // console.log(map)//Map(2) {{…} => "hahaha", "name" => "韩梅梅"} map中的键的范围不限于字符串,各种类型的值(包括对象)都可以当作键的数据结构
+    map.set('name','韩梅梅')
+    console.log(map)//Map(1) {"name" => "韩梅梅"}
+
+    // size属性,返回Map实例的键值对的总数
+    console.log(map.size)//1
+
+    // set(key,value)	设置键名key对应的键值为value，然后返回整个 Map 结构,如果key已经有值，则键值会被更新，否则就新生成该键
+
+    map.set('name','李雷')
+    console.log(map)//Map(1) {"name" => "李雷"} 前面的值 被 覆盖掉了
+
+    // get(key)	读取key对应的键值，如果找不到key，返回undefined
+    console.log(map.get('name'))//李雷
+    console.log(map.get('age'))//undefined
+
+    // delete(key)	删除某个键，返回true。如果删除失败，返回false。
+    // console.log(map.delete('name'))//true 删除成功
+    // console.log(map.delete('city'))//false 删除失败 因为没有这个键值
+
+    // has(key)	has方法返回一个布尔值，表示某个键是否在当前 Map 对象之中。
+    console.log(map.has('name'))//true
+    console.log(map.has('age'))//false
+
+    //clear()	清除所有键值,没有返回值
+    map.clear()
+    console.log(map)//Map(0) {} 所有键值被清除
+</script>
+</html>

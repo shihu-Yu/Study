@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的扩展运算</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let obj1 = {
+        name:"李雷",
+        age : 20
+    }
+
+    //复制对象
+    //以前的方法
+    /*
+    let obj2 = {}
+    for(let key in obj1){
+        obj2[key] = obj1[key]
+    }
+    console.log(obj2)
+    //使用扩展运算
+    let obj3 = {...obj1}
+    console.log(obj3)
+    */
+
+    //合并两个对象
+    let obj2 = {
+        city:"shanghai"
+    }
+    let obj3 = {...obj1,...obj2}
+    console.log(obj3);//{name: "李雷", age: 20, city: "shanghai"}
+</script>
+</html>

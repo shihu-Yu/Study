@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map对象的遍历方法</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let map = new Map()
+    let obj = {
+        city:'杭州'
+    }
+    map.set('name','韩梅梅')
+    map.set('age','18')
+    map.set(obj,'杭州')//键 不限制形式，不仅仅可以用字符串 也可用对象
+    console.log(map)//{"name" => "韩梅梅", "age" => "18", {…} => "杭州"}
+
+    // keys()	返回键名的遍历器
+    console.log(map.keys())//MapIterator {"name", "age", {…}}
+    for(let key of map.keys()){
+        console.log(key)
+        //name
+        //age
+        //{city: "杭州"}
+    }
+    //values()	返回键值的遍历器
+    for(let val of map.values()){
+        console.log(val)
+        //韩梅梅
+        //18
+        //杭州
+    }
+    // entries()	返回键值对的遍历器
+    for(let entry of map.entries()){
+        console.log(entry)
+        //["name", "韩梅梅"]
+        // ["age", "18"]
+        // [{…}, "杭州"]
+    }
+
+    //forEach(function(value,key)	使用回调函数遍历
+    map.forEach(function(value,key){
+        console.log(key+":"+value)
+        // name:韩梅梅
+        // age:18
+        // [object Object]:杭州
+    })
+</script>
+</html>

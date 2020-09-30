@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set的基本使用</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //Set对象的生成 let s1 = new Set() let s2 = new Set(数组)  Set对象里面的值不能重复，具有唯一性
+    let arr = [11,22,33]
+    let s1 = new Set()
+    let s2 = new Set(arr)//相当于 let s2 = new Set([11,22,33])
+    console.log(s1,s2)
+    //Set的size属性 size属性,返回Set实例值的总数，类似于数组的长度
+    console.log(s2.size)//3
+
+    //add 方法添加值到set中 并返回Set结构本身
+    // s2.add(88)
+    // console.log(s2)//Set(4) {11, 22, 33, 88}
+
+    //delete 删除其中的某项值 并返回Set结构本身
+    // s2.delete(22)
+    // console.log(s2)//Set(2) {11, 33}
+
+    //has(value)	返回一个布尔值,表示该值是否为Set的成员
+    console.log(s2.has(22))//true
+    console.log(s2.has(88))//false
+
+    //clear()	清除所有值,没有返回值
+    console.log(s2.clear())//undefined
+</script>
+</html>

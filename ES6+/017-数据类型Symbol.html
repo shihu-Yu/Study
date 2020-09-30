@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据类型Symbol</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // JavaScript 语言的第七种数据类型，前六种是：Undefined、Null、Boolean、String、Number、Object
+    // Symbol值通过Symbol函数生成,格式如下 let s = Symbol([描述])
+
+    // let s = Symbol()
+    // console.log(s)
+
+    let s1 = Symbol('name')
+    let s3 = Symbol('name')
+    let s2 = Symbol('age')
+    
+    //Symbol的主要作用是用来表示对象的属性名。可以保证不会与其他属性名产生冲突。
+    let obj = {
+        [s1]:'李雷',
+        [s3]:'韩梅梅',
+        [s2]:'20'
+    }
+    //错误的使用方法 在用Symbol值作为对象属性名时,不能用点运算符,在对象的内部也不可以用,只能有[]
+    let obj1 = {
+        s1:'李雷',
+        s3:'韩梅梅',
+        s2:'20',
+    }
+
+    //等价于第一种写法 但是一般不这样写
+    let obj2 = {
+    [Symbol('name')]:'李雷',
+    [Symbol('name')]:'韩梅梅',
+    [Symbol('age')] : '20'
+    }
+    console.log(obj)//{Symbol(name): "李雷", Symbol(age): "20"}
+    console.log(obj1)//{s1: "李雷", s3: "韩梅梅", s2: "20"}
+    console.log(obj2)//{Symbol(name): "李雷", Symbol(name): "韩梅梅", Symbol(age): "20"}
+
+    //遍历Symbol的属性
+    let obj4 = {
+        [s1]:'李雷',
+        [s3]:'韩梅梅',
+        [s2]:'20',
+        city:'杭州'
+    } 
+
+    //使用此种方法不能遍历Symbol属性名 只能遍历city这种常规写法的属性名
+    for(let key in obj4){
+        console.log(key)//city 
+    }
+
+    //利用Reflect.ownKeys(obj)获取对象上的所有key来遍历
+    var keys = Reflect.ownKeys(obj4)
+    console.log(keys)//) ["city", Symbol(name), Symbol(name), Symbol(age)]
+    for(let key in keys){
+        console.log(obj4[keys[key]])
+        // 杭州
+        // 李雷
+        // 韩梅梅
+        // 20
+    }
+</script>
+</html>
