@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise处理事件</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const getImgPromise = src => new Promise((resolve,reject)=>{
+        //异步处理逻辑
+        const img = new Image()
+        img.onload = function(){
+            resolve('success...')
+        } 
+        img.onerror = function(){
+            reject('error...')
+        }
+        img.src = src
+    })
+    getImgPromise('./images/1.jpg')
+    .then(data => {
+        console.log(data);
+    })
+    .catch(err => {
+        console.log(err);
+    })
+</script>
+</html>

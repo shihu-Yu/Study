@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise的基本使用</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    const promise = new Promise((relosve,reject)=>{//箭头函数里的两个参数（函数）需要传入 这两个函数来自于Promise的原型对象上，分别表示成功或者失败
+
+        console.log('in promise')//in promise 该行的打印结果在 console.log(promise)的前面 证明是同步处理
+        //模拟异步处理 成功
+        relosve('ok')
+
+        // 函数resolve和reject在调用时都可以传递参数,这个参数通常是异步的处理结果,传递的参数再通过Promise对象的方法来获取
+
+        //模拟异步处理 失败
+        // reject('error')
+
+        //异步任务处理
+        setTimeout(()=>{
+            console.log('in timer')//in timer 这个打印结果在console.log(promise)的后面 是异步处理
+        },100)
+    })//Promise 里必须传入函数否则会报错
+
+
+    console.log(promise)/*Promise {<pending>}这里的pending有三种状态想要显示出来需要前面调用relosve 或者 
+    rejectpending表示正在进行 fulfilled表示已成功 rejected表示已失败*/
+    promise
+    .then((data)=>{
+    console.log(data);//ok 想要显示出来需要前面调用relosve
+    })
+    .catch((data)=>{
+    console.log(data);//error想要显示出来需要前面调用reject
+    })
+</script>
+</html>

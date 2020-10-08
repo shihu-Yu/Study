@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise的then方法</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const p1 = new Promise((resolve,reject)=>{
+
+        
+        //异步任务处理
+        setTimeout(()=>{
+            resolve('ok')
+            
+        },100)
+        
+    })
+
+
+    let p2 = p1
+    .then((data)=>{
+        console.log('p1...')
+        
+        console.log(data);//成功时的返回值
+        // return 123
+        // return 'string...'
+        // return {name:'lilei'}
+        return   p3 = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+            resolve('ok')
+    },100)
+
+})
+    },(data)=>{
+        console.log('p1...');
+        console.log(data)//失败时的返回值
+    })
+
+    p2.then((data)=>{
+        console.log('p2...')
+        console.log(data);/*回调函数每次的返回值都是一个新的 promise实例对象 当回调函数中没有数据时会输出undefined，当有数据时会返回数据 ,
+        当回调函数是一个新的promise时返回的是Promise实例fulfilled状态的回调中就可以获取到这个promise成功时的返回值*/
+        console.log(p2 == p3)//false 回调函数每次的返回值都是一个新的 promise实例对象 因此输出false
+    },(data)=>{
+        console.log('p2...');
+        console.log(data)//失败时的返回值
+    })
+
+    /*then方法的第一个回调函数是当promise状态变为fulfilled时执行,在这个回调函数中可以获取resolve函数调用时传递的数据
+
+    then方法的第一个回调函数中无论是否有返回值,都会返回的是一个新的Promise实例
+
+    then方法的第一个回调函数中如果返回一个具体的数据,则返回新的Promise实例fulfilled状态的回调中就可以获取到这个值
+
+    then方法的第一个回调函数中如果返回一个promise,则返回新的Promise实例fulfilled状态的回调中就可以获取到这个promise成功时的返回值
+
+    then方法的第二个回调函数是当promise状态变为rejected时执行,在这个回调函数中可以获取reject函数调用时传递的数据*/
+   
+</script>
+</html>

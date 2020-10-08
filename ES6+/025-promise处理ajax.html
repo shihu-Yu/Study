@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise处理ajax</title>
+</head>
+<body>
+    
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    /*
+    $.get('https://api.github.com/users/kuazhu',(data)=>{
+        $.get(data.followers_url,(data)=>{
+            $.get(data[0].followers_url,(data)=>{
+                console.log(data)
+            })
+        })
+    })
+    console.log('after get ajax data')
+    */ 
+
+    const getDataPromise = (url,data='') => new Promise((resolve,reject)=>{
+        //异步请求ajax
+        $.ajax({
+            url:url,
+            data:data,
+            success:(data)=>{
+                resolve(data)
+            },
+            error:(jqXhr,statusmsg)=>{
+            reject(statusmsg)
+            }
+        })
+    })
+    getDataPromise('https://api.github.com/users/kuazhu')
+    .then(data=>{
+        return getDataPromise(data.followers_url)
+    })
+    .then(data=>{
+        return getDataPromise(data[0].followers_url)
+    })
+    .then(data=>{
+        console.log(data);
+    })
+    .catch(err=>{
+        console.log(error);
+    })
+</script>
+</html>
