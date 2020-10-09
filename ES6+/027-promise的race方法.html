@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise的race方法</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //race方法
+    const getTimerPromise = delay => new Promise((resolve,reject) => {
+        setTimeout(() => {
+            resolve(delay + 'ms timer')
+        })
+    })
+
+    const promise = [200,400,800].map(delay => getTimerPromise(delay))
+
+    const p1 = new Promise((resolve,reject) => {
+        setTimeout(() =>{
+            reject(20 + 'ms reject')
+        },20)
+    })
+
+    promise.push(p1)
+
+    const p = Promise.race(promise)//返回的是处理最快的那个promise对象
+
+    p.then(data => {
+        console.log(data);
+    })
+    .catch(data => {
+        console.log(data);
+    })
+</script>
+</html>

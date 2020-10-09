@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator函数</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function * gen(){
+        console.log('start gen')
+        yield 'data1'
+        console.log('do something data1')
+        yield 'data2'
+        console.log('do something data2')
+        return 'data3'
+    }
+    const g =gen()
+    console.log(g)//gen {<suspended>}
+    console.log(g.next())/*{value: "data1", done: false}done属性值为false表示没有结束
+                            do something data1
+                            */
+    console.log(g.next())/*{value: "data2", done: false}
+                            do something data2    
+                            */
+    console.log(g.next())//{value: "data3", done: true}done属性值为true表示结束
+</script>
+</html>

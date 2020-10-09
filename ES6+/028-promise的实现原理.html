@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise的实现原理</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const PENDING = 'pending'
+    const FULFILLED = 'fulfilled'
+    const REJECTED = 'rejected'
+
+    function customPromise(resolver){
+        //判断传入参数是否为函数
+        if(typeof resolver != 'function'){
+            throw new Error(' Promise resolver undefined is not a function')
+        }
+        this.Status = PENDING
+        this.value = undefined
+        
+        //存储this
+        const _this = this
+        //保存then中的回调
+        _this.resolvedCallbacks = []
+        _this.rejectedCallbacks = []
+        //resolve方法
+        function resolve(value){
+            //判断当前Promise的状态如果是pending   在进行下一步操作
+            if(_this.Status == PENDING){
+                _this.value = value
+                // 改变状态
+                _this.Status = FULFILLED
+                //执行回调
+                _this.resolvedCallbacks.forEach(cb => cb(_this.value))
+            }
+            
+        }
+        function reject(value){
+            if(_this.Status == PENDING){
+                _this.value = value
+                //改变状态
+                _this.Status = REJECTED
+                //执行回调
+                _this.rejectedCallbacks.forEach(cb => cb(_this.value))
+            }
+            
+        }
+        //调用传入的函数
+        resolver(resolve,reject)
+    }
+
+    //添加then方法
+    customPromise.prototype.then = function(fulfilled,rejected){
+        const _this = this
+        //当promise处于fulilled状态时
+        if(_this.Status == FULFILLED){
+            // 执行fulfilled
+            fulfilled(_this.value)
+        }
+        //当promise处于rejected状态时
+        if(_this.Status == REJECTED){
+            //执行rejecte
+            rejected(_this.value)
+        }
+        //当promise处于pending状态时 保存当前的回调
+        if(_this.Status == PENDING){
+            //保存回调函数
+            _this.resolvedCallbacks.push(fulfilled)
+            _this.rejectedCallbacks.push(rejected)
+        }
+        return this
+    }
+
+    const p1 = new Promise((resolve,reject)=>{
+        console.log('p1')
+        resolve('ok1')
+        // reject('err1')
+    })
+    console.log(p1)
+
+    const p2 = new customPromise((resolve,reject)=>{
+        setTimeout(() => {
+            resolve('ok')
+        }, 100)
+    })
+    
+    p2.then((data)=>{
+        console.log(data);//ok
+    })
+</script>
+</html>

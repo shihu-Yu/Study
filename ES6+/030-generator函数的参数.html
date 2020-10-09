@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>generator函数的参数</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function * gen(x){
+        console.log(x)
+        const y = yield (x + 10)
+        console.log(y)
+        const z = yield (y + 20)
+        console.log(z);
+    }
+    const g = gen(5)//5
+    console.log(g.next(20))//15  30
+    console.log(g.next(30));//50
+</script>
+</html>
