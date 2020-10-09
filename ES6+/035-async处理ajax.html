@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>generator处理ajax</title>
+    <title>async处理ajax</title>
 </head>
 <body>
     
@@ -23,22 +23,16 @@
             }
         })
     })
-    function * gen(url){
-        const data1 = yield getDataPromise(url)
-        const data2 = yield getDataPromise(data1)
-        const data3 = yield getDataPromise(data2)
-        console.log(data3)
+    async function getGithubData(url){
+        const data1 = await getDataPromise(url)
+        const data2 = await getDataPromise(data1.followers_url)
+        const data3 = await getDataPromise(data2[0].followers_url)
+        return data3
     }
-    const g = gen('https://api.github.com/users/kuazhu')
-    g.next().value
-    .then(data => {
-        return g.next(data.followers_url).value
-    })
-    .then(data =>{
-        return g.next(data.followers_url).value
-    })
-    .then(data =>{
-        g.next(data)
+
+    getGithubData('https://api.github.com/users/kuazhu')
+    .then(data=>{
+        console.log(data)
     })
 </script>
 </html>

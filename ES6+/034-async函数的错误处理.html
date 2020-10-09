@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async函数的错误处理</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //防止出错可以把 await语句放在try ... catch代码中
+    async function getUserList(){
+        let list = []
+        try{
+            list = await Promise.reject('ajax error')
+        }
+        catch{
+            list = []
+            console.log('get userlist error');
+        }
+        return list 
+    }
+    getUserList()
+    .then(data=>{
+        console.log(data);
+    })
+</script>
+</html>

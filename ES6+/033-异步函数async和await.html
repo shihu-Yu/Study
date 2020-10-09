@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>异步函数async和await</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const promise = new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve('promise...')
+        },200)
+    })
+    //异步函数async的定义 函数声明
+   
+    async function fn(){
+        // const result = await promise//返回的是对应的promise对象
+        // const result = await 123//返回的是对应的值
+        
+
+        console.log('async...')
+        return result
+    }
+      /*
+    //函数表达式
+    const fn = async function(){
+        const result = await promise
+        console.log('async...')
+        return result
+    }
+       
+
+     //使用对象的方法
+        const obj = {
+            async fn(){
+                const result = await promise
+                console.log('async...')
+                return result
+            }
+        }
+    obj.fn()
+    .then(data=>{
+        console.log(data)
+    })
+    console.log('finally...')//该行代码最先输出
+
+  
+
+    //箭头函数
+    const fn = async ()=>{
+        const result = await promise
+                console.log('async...')
+                return result
+    }
+      */
+    fn()
+    .then(data=>{
+        console.log(data)
+    })
+    console.log('finally...')//该行代码最先输出
+</script>
+</html>
