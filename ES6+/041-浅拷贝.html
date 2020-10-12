@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浅拷贝</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+    let obj1 = {
+        name:'tom',
+        age:20
+    }
+    let obj2 = obj1//仅仅只是是复制了地址
+    obj2.age = 30
+    console.log(obj1)//{name: "tom", age: 30}
+    console.log(obj2)//{name: "tom", age: 30}
+    */
+    //使用循环实现浅拷贝
+    /*
+    let obj1 = {
+        name:'tom',
+        age:20
+    }
+    let obj2 = {}
+    for(let key in obj1){
+        obj2[key] = obj1[key]
+    }
+    obj2.age = 30
+    console.log(obj1)//{name: "tom", age: 20}
+    console.log(obj2)//{name: "tom", age: 30}
+    */
+
+    //使用扩展运算符实现浅拷贝
+    /*
+    let obj1 = {age:20}
+    let obj2 = {...obj1}
+    obj2.age = 30
+    console.log(obj1)//{age: 20}
+    console.log(obj2)//{age: 30}
+    */
+
+    //使用Object.assign方法实现浅拷贝
+    /*
+    let obj1 = {age:20}
+    let obj2 = Object.assign({},obj1)
+    obj2.age = 30
+    console.log(obj1)//{age: 20}
+    console.log(obj2)//{age: 30}
+    */
+
+    //浅拷贝的问题
+    let obj1 = {age:20,friends:['tom']}
+    let obj2 = Object.assign({},obj1)
+    //当属性为引用类型时 向对象二添加新的值 obj1的值也发生了改变
+    obj2.friends.push('lili')
+    //浅拷贝只复制第一层,接下来的还是复制地址。
+    console.log(obj1)//{age: 20, friends: Array(2)}
+    console.log(obj2)//{age: 20, friends: Array(2)}
+</script>
+</html>

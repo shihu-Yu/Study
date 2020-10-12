@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的新增方法</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let obj = {
+        name: '李雷',
+        age:20
+    }
+    Object.defineProperty(obj,'city',{
+    value:'BJ'//默认是不可枚举的
+})
+    console.log(Object.keys(obj))//["name", "age"]
+    console.log(Object.entries(obj))//["name", "李雷"] ["age", 20]
+    console.log(Object.values(obj))//["李雷", 20]
+    console.log(Object.getOwnPropertyDescriptor(obj))
+</script>
+</html>

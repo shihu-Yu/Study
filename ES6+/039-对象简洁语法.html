@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象简洁语法</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+    const username = '韩梅梅'
+    const obj = {
+        username
+    }
+    console.log(obj)//{username: "韩梅梅"}   上面的这种写法等同于下面的写法
+    */
+    /*
+    const username = '韩梅梅'
+    const obj = {
+        username:username
+    }
+    console.log(obj)//{username: "韩梅梅"}
+     */
+
+    /*等同于下面的写法*/
+    const name = '韩梅梅'
+    const age  = 20
+    const obj = {
+        name,
+        age,
+        sayName(){
+            console.log('I am ' + this.name)
+        },
+        sayAge(){
+            console.log('I am ' + this.age + ' years old');
+        },
+    }
+    console.log(obj)
+
+    /*等同于上面的写法*/
+    const username = 'Tom'
+    const age1 = 18
+    const obj1 = {
+        username:username,
+        age:age,
+        sayName:function() {
+            console.log('My name is ' + this.username)
+        },
+        sayAge:function() {
+            console.log('I am ' + this.age1 + ' years old')
+        }
+    }
+    console.log(obj1)
+</script>
+</html>

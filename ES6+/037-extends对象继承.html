@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>extends对象继承</title>
+</head>
+<body>
+    
+</body>
+<script>
+    
+    //继承父类元素
+    /*
+    function Person(name,age){
+        this.name = name
+        this.age = age
+    }    
+    Person.prototype = {
+        showName:function(){
+            console.log('I am '+ this.name)
+        }
+    }
+    //父类的原型对象的constructor定义为不可枚举,防止子类继承
+    Object.defineProperty(Person.prototype,'constructor',{
+        value:Person
+    })
+
+    //父类的原型对象的方法定义为不可枚举,导致子类继承不到
+    Object.defineProperty(Person.prototype,'showAge',{
+        value:function(){
+            console.log('I am ' + this.age + ' years old')
+        }
+    })
+
+    //ES5的方法
+    function Student(name,age,major){
+        Person.call(this,name,age)//继承父类的属性
+        this.major = major
+    }
+    Student.prototype = Object.create(Person.prototype)
+
+    Object.defineProperty(Student.prototype,'constructor',{
+        value:Student,
+    })
+    //添加方法
+    Student.prototype.sayMajor = function(){
+        console.log('I am from ' + this.major)
+    }
+
+    */
+    
+    //使用ES6+的方法
+    
+    class Person{
+        constructor(name,age){
+            this.name = name 
+            this.age = age 
+        }
+        sayName(){
+            console.log('my name is' + this.name)
+        }
+        sayAge(){
+            console.log('I am ' + this.age + 'years old');
+        }
+        static sayHi(){
+            console.log('hellow guys ');
+        }
+    }
+    class Student extends Person{
+        constructor(name,age,major){
+            super(name,age)//必须调用surper方法是下面可以使用this 否则会报错
+            this.major = major
+        }
+        //添加方法
+        sayMajor(){
+            console.log('I am from ' + this.major);
+        }
+    }
+    
+    let s = new Student('李雷','20','math')
+    console.log(s);
+    s.sayMajor()
+
+    /*
+    let p1 = new Person('李雷','20')
+    p1.sayName()
+    Person.sayHi()
+    */
+</script>
+</html>
