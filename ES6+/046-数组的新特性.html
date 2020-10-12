@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的新特性</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+<script>
+    //将伪数组转换为真数组 Array.from
+    let likeArr = {
+        0:'Tom',
+        1:'Amy',
+        length:2
+    }
+    let arr = Array.from(likeArr)
+    console.log(arr)//(2) ["Tom", "Amy"]
+
+    let elems = document.querySelectorAll('div')
+    console.log(elems);//NodeList(3) [div, div, div]
+    let arr1 = Array.from(elems)
+    console.log(arr1);//(3) [div, div, div]
+
+    //判读是否为数组 Array.isArray
+    console.log(Array.isArray([]));//true
+    console.log(Array.isArray({}));//false
+
+    //用于找出第一个符合条件的数组成员。Array.prototype.find()
+    let arr2 = [ 11,22,33,4,55,66,52]
+    let item = arr2.find(value=>value>20)
+    console.log(item);//22
+    console.log(arr2.find(value=>value>80));//undedined
+
+    //Array.prototype.findIndex()用法与find方法非常类似，返回第一个符合条件的数组成员的位置，如果所有成员都不符合条件，则返回-1。
+    console.log(arr2.findIndex(value=>value>20))//1 找到符合条件的值 22 返回其下标 1
+    console.log(arr2.findIndex(value=>value>80))//-1 找不到符合条件的值 因此返回-1
+
+</script>
+</html>

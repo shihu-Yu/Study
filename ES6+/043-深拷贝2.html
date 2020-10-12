@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深拷贝2</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //自定义函数
+    let obj1 = {
+        age: 18,
+        friends: ['Tom'],
+        say: function () { },
+        city: undefined,
+        name: Symbol('Amy'),
+        job: {
+            name: 'worker',
+            location: 'BJ'
+        }    
+    }
+    //
+    function deepClone(obj){
+        //判断是否为对象
+        function isObject(o){
+            return (typeof o === 'object') && (0 !== null)
+        }
+        //当传入参数如果不是对象是抛出异常
+
+        if(!isObject(obj)){
+            throw new Error('arguments is not a object')
+        }
+        //复制对象
+        let newObj = Array.isArray(obj) ? [...obj] : {...obj}
+        //递归复制
+        Object.keys(newObj).forEach(key=>{
+            newObj[key] = isObject(obj[key]) ? deepClone(obj[key]) : obj[key]
+        })
+        return newObj
+    }
+    
+    let obj2 = deepClone(obj1)
+    obj2.friends.push('Leo')
+    obj2.job.name = 'teacher'
+    console.log(obj1)
+    /*
+    {
+        age: 18
+        city: undefined
+        friends: ["Tom"]
+        job: {name: "worker", location: "BJ"}
+        name: Symbol(Amy)
+        say: ƒ ()
+    }
+    */
+    console.log(obj2);
+
+    console.log(obj2)
+    /*
+    {
+        age: 18
+        city: undefined
+        friends: ["Tom", "Leo"]
+        job: {name: "teacher", location: "BJ"}
+        name: Symbol(Amy)
+        say: ƒ ()
+    }
+    */
+</script>
+</html>
