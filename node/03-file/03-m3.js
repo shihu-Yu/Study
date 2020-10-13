@@ -1,12 +1,13 @@
-const str = 'yuhshihu'
+
+console.log('123')
+const str = 'hello';
 const fn = ()=>{
     console.log('fn...');
 }
 const obj = {
-    name:'haha',
-    age:'20'
+    name:"Tom",
+    age:18
 }
-console.log(exports == module.exports)
-exports.str = str 
-module.exports.fn = fn 
-module.exports.obj = obj
+exports.str = str
+module.exports.fn = fn
+module.exports = obj
