@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模块化</title>
+</head>
+<body>
+    <button>点击</button>
+</body>
+<!--引入requirejs来支持AMD-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+<script>
+    // require(['query'],(query)=>{
+    //     console.log(query.getOne('button'));
+    // })
+
+    require(['CountClick'],(CountClick)=>{
+        CountClick.count('button')
+    })
+</script>
+</html>
