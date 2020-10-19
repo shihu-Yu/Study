@@ -2,27 +2,35 @@ const fs = require('fs')
 const http = require('http')
 const path = require('path')
 const url = require('url')
+const mime = require('./mime.json')
 //导入swig的模板
 const swig = require('swig')
-const mime = require('./mime.json')
+const { get ,del} = require('./model/item.js')
 
-const server = http.createServer((req,res)=>{
+const server = http.createServer(async (req,res)=>{
 
     const parseUrl = url.parse(req.url,true)
     const pathname = parseUrl.pathname
     
     //请求首页
     if(pathname == '/' || pathname == '/index.html'){
-        const filePath = path.normalize(__dirname+'/static/index.html')
-
-        //引入模版
-        const template = swig.compileFile(filePath)
-        const html = template({
-            data: [{ "id": "1", "task": "学习" }, { "id": "2", "task": "睡觉" }]
-        })
-        res.setHeader('Content-type', "text/html;charset=UTF-8")
-        res.end(html)   
-   
+        try {
+            const filePath = path.normalize(__dirname + "/static/index.html")
+            const data = await get()
+            //引入模版
+            const template = swig.compileFile(filePath)
+            const html = template({
+                data
+            })
+            res.setHeader('Content-type', "text/html;charset=UTF-8")
+            res.end(html)
+        }catch(e){
+            console.log(e);
+            res.statusCode = 404
+            res.setHeader('Content-Type', 'text/html;charset=utf-8')
+            res.end('<h1>请求出错了</h1>')
+        }
+    }   
         /*
             fs.readFile(filePath,(err,data)=>{
             if(err){
@@ -34,8 +42,9 @@ const server = http.createServer((req,res)=>{
                 res.end(data)
             }
         })
-       */ 
     }
+       */ 
+    
     //处理添加逻辑
     else if(pathname == '/add'){
         res.end(JSON.stringify({
@@ -45,10 +54,22 @@ const server = http.createServer((req,res)=>{
     }
     //处理删除逻辑
     else if(pathname == '/del'){
-        res.end(JSON.stringify({
-            code: 0,
-            msg:'del ok'
-        }))
+        //获取get请求的参数
+        const id = parseUrl.query.id
+        try{
+            await del(id)
+            //成功时返回的数据
+            return res.end(JSON.stringify({
+                code: 0,
+                msg:'del ok'
+            }))
+        }catch(e){
+           return res.end(JSON.stringify({
+                code: 1,
+                msg:'del error'
+            }))
+        }
+       
     }
     //处理上传逻辑
     else if(pathname == '/uploadAvatar'){
