@@ -10,7 +10,7 @@ fs.access('./rs.txt',(err)=>{
 })
 
 //模拟不存在这个文件
-fs.access('./.t01xt',(err)=>{
+fs.access('./01.txt',(err)=>{
     if(err){
         console.log('no such file or directory')//no such file or directory
     }else{
