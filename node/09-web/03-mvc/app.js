@@ -3,22 +3,53 @@ const http = require('http')
 const path = require('path')
 const url = require('url')
 const mime = require('./mime.json')
-const querystring = require('querystring')
-//导入swig的模板
-const swig = require('swig')
-
-//引入 formidable    这是一个nodejs处理文件上传的包。
-const { IncomingForm } = require('formidable')
-
-
-const { get ,del, add} = require('./model/item.js')
-
 
 const server = http.createServer(async (req,res)=>{
-
     const parseUrl = url.parse(req.url,true)
     const pathname = parseUrl.pathname
-    
+    //构建一个简单的MVC框架，框架的主要做法是约定规则
+    //静态资源约定：以/static/开头的请求都是静态资源
+    if(pathname.startsWith('/static/')){
+        const filePath = path.normalize(__dirname+ pathname)
+        fs.readFile(filePath,(err,data)=>{
+            if(err){
+                res.setHeader('Content-Type','text/html;charest=UTF-8')
+                res.statusCode = 404
+                res.end('<h1>你访问的页面走丢了404</h1>')
+            }else{
+                const extame = path.extname(filePath)
+                const mimeType = mime[extame] || 'text/plain'
+                res.setHeader('Content-Type',mimeType+';charest=utf-8')
+                res.end(data)
+            }
+        })
+    }
+    //约定路由的格式：/controller/actions/arg1/arg2/...
+    else{
+        //解析路径
+        const paths = pathname.split('/')
+        const controller = paths[1] || 'item'
+        const action = paths[2] || 'index'
+        const args = paths.splice(3)
+
+        //约定：所有的controller都在./controller/的文件夹下面
+        try{
+            const mode = require(path.normalize(__dirname + "/controller/" + controller))
+            //调用方法
+            mode[action]  &&  mode[action](...[req, res].concat(args))
+            
+        }catch(e){
+            console.log(err)
+            res.setHeader('Content-type', "text/html;charset=UTF-8")
+            res.statusCode = 404
+            res.end('<h1>请求出错了</h1>')
+        }
+    }
+})
+    /*
+const server = http.createServer(async (req,res)=>{
+    const parseUrl = url.parse(req.url,true)
+    const pathname = parseUrl.pathname
     //请求首页
     if(pathname == '/' || pathname == '/index.html'){
         try {
@@ -38,19 +69,8 @@ const server = http.createServer(async (req,res)=>{
             res.end('<h1>请求出错了</h1>')
         }
     }   
-        /*
-            fs.readFile(filePath,(err,data)=>{
-            if(err){
-                res.setHeader('Content-Type','text/html;charest=UTF-8')
-                res.statusCode = 404
-                res.end('<h1>你访问的页面走丢了404</h1>')
-            }else{
-                res.setHeader('Content-Type','text/html;charest=utf-8')
-                res.end(data)
-            }
-        })
-    }
-       */ 
+        
+     
     
     //处理添加逻辑
     else if(pathname == '/add'){
@@ -146,7 +166,7 @@ const server = http.createServer(async (req,res)=>{
     }
    
 })
-
-server.listen(3000,()=>{
+*/
+server.listen(3000,'127.0.0.1',()=>{
     console.log('server is running at http://127.0.0.1:3000')
 })
