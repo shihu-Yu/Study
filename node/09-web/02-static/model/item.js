@@ -24,7 +24,26 @@ async function del(id){
     await writeFile(dataPath,JSON.stringify(newArr))
 }
 
+//添加数据
+async function add(task){
+    //读取数据
+    const data = await readFile(dataPath)
+
+    const arr = JSON.parse(data)
+    const obj = {
+        //通过Data.now()的方法 向数据生成id
+        id:Date.now().toString(),
+        task:task
+    }
+    arr.push(obj)
+    //写入文件
+    await writeFile(dataPath,JSON.stringify(arr))
+    //返回对象
+    return obj
+}
+
 module.exports = {
     get,
-    del
+    del,
+    add
 }

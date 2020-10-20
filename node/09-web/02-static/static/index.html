@@ -10,7 +10,10 @@
         <div class="head">
             <div class="avatar">
                 <img src="images/avatar.png" alt="">
-                <input type="file">
+                <!-- 上传时要添加表单属性 -->
+                <form enctype="multipart/form-data" id="avatar-form">
+                    <input type="file" name="avatar" class="avatar-input">
+                </form>
             </div>
             <h1>ToDoList</h1>
         </div>

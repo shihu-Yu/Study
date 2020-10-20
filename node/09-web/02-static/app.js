@@ -3,9 +3,16 @@ const http = require('http')
 const path = require('path')
 const url = require('url')
 const mime = require('./mime.json')
+const querystring = require('querystring')
 //导入swig的模板
 const swig = require('swig')
-const { get ,del} = require('./model/item.js')
+
+//引入 formidable    这是一个nodejs处理文件上传的包。
+const { IncomingForm } = require('formidable')
+
+
+const { get ,del, add} = require('./model/item.js')
+
 
 const server = http.createServer(async (req,res)=>{
 
@@ -47,10 +54,35 @@ const server = http.createServer(async (req,res)=>{
     
     //处理添加逻辑
     else if(pathname == '/add'){
-        res.end(JSON.stringify({
-            code: 0,
-            msg:'add ok'
-        }))
+        //存储数据流
+        let body = ''
+        //通过监听data事件来读取数据
+        req.on('data',(chunk)=>{
+            //存储每次通过数据流发送来的数据
+            body += chunk
+        })
+        //通过监听end事件来判断数据是否传输完毕，并做出相应处理
+        req.on('end',async()=>{
+            try{
+                const query = querystring.parse(body)
+                const data = await add(query.task)
+                //返回数据
+                 res.end(JSON.stringify({
+                     code: 0,
+                     msg:'add ok',
+                     data
+                 }))
+            }catch(e){
+                console.log(e)
+                //返回数据
+                res.end(JSON.stringify({
+                    code:1 ,
+                    msg:'add error',
+                }))
+            }
+          
+        })
+        
     }
     //处理删除逻辑
     else if(pathname == '/del'){
@@ -73,10 +105,29 @@ const server = http.createServer(async (req,res)=>{
     }
     //处理上传逻辑
     else if(pathname == '/uploadAvatar'){
-        res.end(JSON.stringify({
-            code: 0,
-            msg:'uploadAvatar ok'
-        }))
+        //生成incomingForm对象
+        let incomingForm = new IncomingForm({
+            //设置文件的保存路径
+            uploadDir:'./static/images',
+            //文件保留拓展名
+            keepExtensions:true,
+        })
+        incomingForm.parse(req,(err, fields, files)=>{
+            if(err){
+                console.log('upload avatar error:',err)
+                return res.end(JSON.stringify({
+                    code: 1,
+                    msg:'upload error'
+                }))
+            }else{
+                //成功时返回的数据
+                return res.end(JSON.stringify({
+                    code: 0,
+                    msg:'upload ok',
+                    data:files.avatar.path.substr(7)//把文件路径中'static/'截取掉
+                }))
+            }
+        })
     }
     //处理静态资源
     else {
