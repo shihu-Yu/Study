@@ -38,7 +38,7 @@ const server = http.createServer(async (req,res)=>{
             //调用方法
             mode[action]  &&  mode[action](...[req, res].concat(args))
             
-        }catch(e){
+        }catch(err){
             console.log(err)
             res.setHeader('Content-type', "text/html;charset=UTF-8")
             res.statusCode = 404

@@ -4,7 +4,7 @@
     $input.on('keydown',function(ev){
         if(ev.keyCode == 13){
             $.ajax({
-                url:'/add',
+                url:'/item/add',
                 type:'post',
                 dataType:'json',
                 data:{
@@ -31,12 +31,9 @@
     $wrap.on('click','li',function(){
         var $this = $(this)
         $.ajax({
-            url:'/del',
+            url:'/item/del/' + $this.data('id'),
             type:'get',
             dataType:'json',
-            data:{
-                id:$this.data('id')
-            },
             success:function(result){
                 if(result.code == 0){
                     $this.remove()
@@ -56,7 +53,7 @@
         var formData = new FormData($('#avatar-form')[0])
         //使用ajax上传
         $.ajax({
-            url:'/uploadAvatar',
+            url:'/item/uploadAvatar',
             type:'POST',
             data:formData,
             contentType:false,//必须设置
