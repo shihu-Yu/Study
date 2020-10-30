@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用swig</title>
+</head>
+<body>
+    <p>name:{{name}}</p>
+
+    <p>订单编号:{{order.orderNum}}</p>
+
+    <p>
+        {% if type == 1%}
+            欢迎:管理员
+        {% endif %}
+        {% if type == 2%}
+            欢迎:普通用户
+        {% endif %}
+    </p>
+
+    <p>
+        {% if level == 1 %}
+            您是尊敬的vip
+        {% elseif level == 2%}
+            您是尊敬的svip
+        {% else %}
+            您是尊敬的ssvip
+        {% endif %}
+    </p>
+
+    
+    {% for key ,val in friends %}
+        <p>{{ key }} : {{ val }}</p>
+    {% endfor %}
+
+    
+</body>
+</html>
