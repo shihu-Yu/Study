@@ -12,6 +12,6 @@
   \**********************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements:  */
-eval("console.log('你好啊，嘿嘿')\n\n//# sourceURL=webpack://01-install/./src/index.js?");
+eval("console.log('你好啊，hello')\n\n//# sourceURL=webpack://01-install/./src/index.js?");
 /******/ })()
 ;

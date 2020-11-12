@@ -1,1 +1,1 @@
-console.log('你好啊，嘿嘿')
+console.log('你好啊，hello')
