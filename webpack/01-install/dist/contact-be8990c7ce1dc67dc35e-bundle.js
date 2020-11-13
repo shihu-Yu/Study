@@ -7,11 +7,11 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (() => { // webpackBootstrap
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
+/*!************************!*\
+  !*** ./src/contact.js ***!
+  \************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements:  */
-eval("console.log('你好啊，hello')\n\n//# sourceURL=webpack://01-install/./src/index.js?");
+eval("console.log('contact...')\n\n//# sourceURL=webpack://01-install/./src/contact.js?");
 /******/ })()
 ;
