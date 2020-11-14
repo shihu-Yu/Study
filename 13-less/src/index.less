@@ -1,3 +1,125 @@
-body{
-    color: blueviolet;
+// 注释一  该方法写的注释再编译之后会被清除
+/* 注释二  该方法写的注释被编译之后不会被清除*/
+
+/*
+//定义变量
+@color:blue;
+@width:100px;
+@height:100px;
+
+
+
+div{
+    margin-bottom: 10px;
+}
+
+//定义带参数的混合 使用时必须要带参数 否则会报错
+.border-radius(@r){
+    -webkit-border-radius:@r;
+    -ms-border-radius:@r;
+    -o-border-radius:@r;
+    border-radius: @r;
+}
+//定义带默认参数的混合 使用该类混合时可不带参数
+.border-radius-def(@r:20px){
+    // 前面的webkit ms o 是适配不同浏览器的写法
+    -webkit-border-radius:@r;
+    -ms-border-radius:@r;
+    -o-border-radius:@r;
+    border-radius: @r;
+}
+// 使用变量  同时这个也是基本混合
+.box1{
+    color:@color;
+    width:@width;
+    height:@height;
+    background-color: aqua;
+    .border-radius-def(30px)
+}
+.box2{
+    //使用基本混合
+    .box1
+}
+*/
+
+
+// 匹配模式 显示三角形
+/*
+.triangle(top,@w,@c){
+    border-width: @w;
+    border-color: @c transparent transparent transparent ;
+}
+.triangle(left,@w,@c){
+    border-width: @w;
+    border-color: transparent transparent transparent @c;
+}
+.triangle(rigth,@w,@c){
+    border-width: @w;
+    border-color: transparent @c transparent transparent ;
+}
+.triangle(bottom,@w,@c){
+    border-width: @w;
+    border-color: transparent transparent  @c transparent ;
+}
+
+// 下面的  @_ 全部都可以匹配的 该部分代码也就是生成不同三角形所需要的共同样式
+.triangle(@_,@w,@c){
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    border-style: solid;
+}
+//想要生成怎样的三角形只需改变内部的参数 然后向上匹配相应的模式就可生成
+.box1{
+    .triangle(left,50px,peru)
+}
+*/
+
+// 嵌套  嵌套就是在选择器中嵌套选择器
+.list{
+    width:600px;
+    li{
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        border-bottom: 1px dashed darkslategrey;
+        padding-bottom: 10px;
+        span{
+            line-height: 30px;
+            font-size: 25px;
+            color: seagreen;
+        }
+        a{
+            text-decoration: none;
+        }
+        &:hover{
+            background-color: #ccc;
+        }
+    }
+}
+
+
+// 运算 less中常见的运算有：+(加) -(减) *(乘) /(除)
+.fs(@val){
+    // font-size: @val + 20px;
+    // font-size: @val - 30px;
+    // font-size: @val * 30px;
+    font-size: @val / 2px;
+}
+.box3{
+    .fs(100px)
+    
+}
+// !important关键字
+.box{
+    font-size: 30px;
+    color: darkslategray;
+    width: 100px;
+    height: 100px;
+    background-color: lightseagreen;
+}
+.box4{
+    //在混合模式后添加!important关键字,会为混合模式中的所有样式添加!important
+    .box !important
 }
