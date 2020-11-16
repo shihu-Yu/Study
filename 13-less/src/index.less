@@ -123,3 +123,30 @@ div{
     //在混合模式后添加!important关键字,会为混合模式中的所有样式添加!important
     .box !important
 }
+
+
+@rem:20px;
+
+.set(@attr,@val){
+    // 属性名称必须要用大括号括起来，后面的unit方法可以设置属性的数值与单位
+    @{attr}:unit(@val*2,px);
+}
+.rem(@attr,@px1){
+    @{attr}:unit(@px1 / @rem,rem)
+}
+.rem(@attr,@px1,@px2){
+    @{attr}:unit(@px1 / @rem,rem) unit(@px2 / @rem,rem)
+}
+.rem(@attr,@px1,@px2,@px3,@px4){
+    @{attr}:unit(@px1 / @rem,rem) unit(@px2 / @rem,rem) unit(@px3 / @rem,rem) unit(@px4 / @rem,rem)
+}
+.box5{
+    // .set(width,200px);
+
+    // 引用时括号里面前面写属性名称 后面时属性值
+    .rem(font-size,100px);
+    // .rem(padding,100px,100);
+
+    .rem(padding,40,30,40,50);
+    background-color:green;
+}
