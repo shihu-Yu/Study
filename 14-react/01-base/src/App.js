@@ -40,7 +40,7 @@ class App extends Component{//改行代码页可以写成 class App extends Reac
 }
 */
 
-// 绑定事件
+// 绑定事件   受控组件
 
 // class App extends Component{
 //     // 获取输入框内容添加的代码
@@ -49,6 +49,12 @@ class App extends Component{//改行代码页可以写成 class App extends Reac
 //         this.state = {
 //             content:'ccc'
 //         }
+
+        //事件的另一种写法这样写下边使用使 就不需要再bind
+        /*
+            this.handleAdd = this.handleAdd.bind(this)
+        /*
+
 //     }
 //     //定义函数
 //     handleAdd(){
@@ -88,19 +94,184 @@ class App extends Component{//改行代码页可以写成 class App extends Reac
 // }
 
 
+// 受控组件
+
+// class App extends Component{
+//     constructor(props){
+//         super(props)
+//     }
+//     handleChange(){
+//         console.log(this.input.value)
+//     }
+
+//     render(){
+//         return(
+//             <div>
+//                 {/* 通过ref组件属性把当前的DOM节点绑定在组件上 */}
+//                 <input ref={input=>{this.input=input}} onChange={this.handleChange.bind(this)}/>
+//             </div>  
+//         )
+          
+//     }
+
+// }
+
+
+
+
+
 // 父组件给子组件传递元素
 //引入子组件
-import UserInfo from './UserInfo.js'
 
+// import UserInfo from './UserInfo.js'
+
+// class App extends Component{
+//     constructor(props){
+//         super(props)
+//         this.state = ({
+//             age:18
+//         })
+//     }
+//     // 定义一个方法传递给子组件 ，使子组件可以通过这个方法来改变父组件传递过去的数据
+//     handleAddAge(age){
+//         this.setState({
+//             // age : age
+//             age : 20,
+//             tips:'haha'
+//         })
+//     }
+//     render(){
+//         console.log('APP Component render...')
+//         return(
+//             <div className="App" >
+//                 {this.state.tips}
+//                 {/* 插入子组件  同时把父组件的属性和方法传递给子组件*/}
+//                 <UserInfo name="李雷" age={this.state.age} city="海口"  handleAddAge = {this.handleAddAge.bind(this)} />
+//                 {/* 验证的props发生改变后render函数会重新执行 */}
+//                 <button onClick={()=>{this.setState({age:25})}}>更改父组件的state来更改子组件的props</button>
+//                 {/*验证当父组件的render函数执行时,子组件的render函数也会被执行 */}                 
+//                 <p><button onClick={() => { this.setState({ tips: '你好' }) }}>更改父组件的state让父组件render</button></p> 
+//             </div>
+            
+//         )  
+//     }
+// }
+
+
+// 条件渲染
+// class App extends Component{
+//     constructor(props){
+//         super(props)
+//         this.state = {
+//             islogin:false
+//         }
+//     }
+//     render(){
+//         const islogin = this.state.islogin
+//         // 方法一 使用 if 条件语句
+//         /*
+//         let button 
+//         if(islogin){
+//             button = <button>退出</button>
+//         }else{
+//             button = <button>登陆</button>
+//         }
+//         return(
+//             <div className="APP">
+//                 {button}
+//             </div>
+//         )
+//         */
+
+//         // 方法二 使用三目运算
+//         return(
+//             <div className="APP">
+//                 {
+//                     islogin 
+//                     ? <button>退出</button> 
+//                     : <button>登陆</button>
+//                 }
+//             </div>
+//         )
+//     }
+// }
+
+// 列表渲染
+/*
 class App extends Component{
+    constructor(props){
+        super(props)
+    }
     render(){
+        const User = [
+            {
+                id:1,
+                name:"韩梅梅",
+                age:20
+            },
+            {
+                id:2,
+                name:"李雷",
+                age:25
+            }
+        ]
+        const item = User.map((User)=>(
+// key={User.id} 这行代码一定要写 否则会看到Warning: Each child in a list should have a unique "key" prop.这样的警告
+        <li key={User.id}> id: {User.id }   name: {User.name}   age: {User.age} </li>))
         return(
-            <div className="App" >
-                {/* 插入子组件 */}
-                <UserInfo name="李雷" age={20} city="海口"/>
+            <div className="App">
+                <ul>
+                    {item}
+                </ul>
             </div>
-        )  
+        )
     }
 }
+*/
+
+//  生命周期 生命周期函数是指在某个时刻组件会自动执行的函数   
+// 挂载
+class App extends Component{
+    // 	初始化组件的数据
+    constructor(props){
+        console.log('constructor...')
+        super(props)
+        this.state = {
+            tips : "哈哈"
+        }
+    }
+    // 多用于如果props有变化,需要更新state的场景,该方法返回state的更新 该方法不管在什么位置都比render()方法要早运行
+    static getDerivedStateFromProps(nextProps, prevState){
+        console.log('getDerivedStateFromProps ....')
+        console.log(nextProps,prevState)
+        // 使用return 返回state更新的数据 然后和上面的数据进行合并
+        // return null // 返回null代表没有更新或者不更新
+
+        // 返回的state更新 回合上面原来的state数据进行合并
+        return {
+            tips:"明天你好",
+            age:20
+        }
+    }
+
+    //组件挂载完毕执行,多用于发送ajax获取数据 该方法只有再render()方法执行完之后 才运行
+    componentDidMount(){
+        console.log('componentDidMount...')
+    }
+
+    render(){
+        console.log('render ...')
+        return(
+            <div className="APP">
+                <div>
+                {console.log(this.state)}
+                {this.state.tips}
+                </div>
+            </div>
+        )
+    }
+}
+
+
 
 export default App
