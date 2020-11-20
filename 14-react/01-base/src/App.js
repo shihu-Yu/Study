@@ -1,6 +1,7 @@
 // 定义组件
 // import React from 'react'
 import React ,{ Component ,Fragment} from 'react'
+import UserInfo from './UserInfo'
 
 
 // 方法一定义组件 使用函数
@@ -230,42 +231,33 @@ class App extends Component{
 */
 
 //  生命周期 生命周期函数是指在某个时刻组件会自动执行的函数   
-// 挂载
+// 
+
 class App extends Component{
-    // 	初始化组件的数据
     constructor(props){
-        console.log('constructor...')
-        super(props)
+        super(props),
         this.state = {
-            tips : "哈哈"
-        }
+            isAlive:true
+        },
+        this.handleDel = this.handleDel.bind(this)
     }
-    // 多用于如果props有变化,需要更新state的场景,该方法返回state的更新 该方法不管在什么位置都比render()方法要早运行
-    static getDerivedStateFromProps(nextProps, prevState){
-        console.log('getDerivedStateFromProps ....')
-        console.log(nextProps,prevState)
-        // 使用return 返回state更新的数据 然后和上面的数据进行合并
-        // return null // 返回null代表没有更新或者不更新
-
-        // 返回的state更新 回合上面原来的state数据进行合并
-        return {
-            tips:"明天你好",
-            age:20
-        }
+    handleDel(){
+        this.setState({
+            isAlive:false
+        })
     }
-
-    //组件挂载完毕执行,多用于发送ajax获取数据 该方法只有再render()方法执行完之后 才运行
-    componentDidMount(){
-        console.log('componentDidMount...')
-    }
-
     render(){
-        console.log('render ...')
+        console.log('App render ...')
         return(
             <div className="APP">
                 <div>
-                {console.log(this.state)}
-                {this.state.tips}
+                    {/* 生命周期 */}
+                    {this.state.isAlive ? <UserInfo name="韩梅梅" age={18} /> : null}
+                    {/* 验证组件的state 发生改变 render函数会重新渲染 */}
+                    {/* <p><button onClick={()=>{this.setState({major:'history'})}}>更改子组件的state</button></p> */}
+
+                    {/*  卸载时的生命周期 */}
+                    <p><button onClick={this.handleDel}>卸载组件</button></p>
                 </div>
             </div>
         )

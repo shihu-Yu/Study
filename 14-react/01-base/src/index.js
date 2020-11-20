@@ -40,7 +40,15 @@ const name = '良辰'
 // ReactDom.render(element,document.getElementById('root'))
 
 // 引入组件
+// const elem = (
+//     <div className="App">
+//         <ul className="List">
+//             <li>item</li>
+//         </ul>
+//     </div>
+// )
 
+// console.log(elem)
 import App from './App.js'
 
 ReactDom.render(<App />,document.getElementById('root'))
