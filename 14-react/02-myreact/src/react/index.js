@@ -2,9 +2,9 @@ const React = {
     createElement
 }
 // 模拟react中的createElement方法
-function createElement(Tag,props,...children){
+function createElement(tag,props,...children){
    return {
-       Tag,
+       tag,
        props,
        children
    }

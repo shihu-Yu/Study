@@ -2,11 +2,11 @@
 import React from './react'
 import ReactDom from './react-dom'
 const elem = (
-    <div className="App">
+    <div className="App" style="color:green" onClick={()=>{elert(123)}}>
         <ul className="List">
             <li>item</li>
         </ul>
     </div>
 )
-
-ReactDom.render(123,document.getElementById('root'))
+console.log(elem)
+ReactDom.render(elem,document.getElementById('root'))
