@@ -1,5 +1,7 @@
 // 模拟react-dom
 
+import { Component } from "../react"
+
 
 
 function createDom(vdom){
@@ -31,22 +33,51 @@ function createDom(vdom){
     }
 
     // 当传入的为组件时
-   if(typeof vdom.tag == "function"){
+    else if(typeof vdom.tag == "function"){
         // 生成组件的实例
-        const Instance = createComponentInstance(vdom.tag,vdom.props)
-
-        
+        const instance = createComponentInstance(vdom.tag,vdom.props)   
+        // 生成组件实例对象的DOM节点
+        createDomForComponentInstace(instance)
+        // 返回对应生成的组件Dom节点
+        return instance.dom
    }
 }
 
 /**
  * 该函数用于生成组件的实例对象
  * @param {*} comp 
- * @param {*} props 
+ * @param {} props 
  */
 function createComponentInstance(comp,props){
-
+    let instance
+    // 当组件类组件时
+    if(comp.prototype.render){
+        instance = new comp(props)
+    }
+    // 当组件为函数组件时
+    else{
+        instance = new Component(comp)
+        instance.constructor = comp
+        instance.render = function(){
+            return comp(props)
+        }
+    }
+    return instance
 }   
+
+/**
+ * 根据组件的实例生成组件的Dom节点并返回
+ * @param {组件的实例} instance 
+ */
+function createDomForComponentInstace(instance){
+    // 获取虚拟Dom并且挂载到节点上
+    instance.vdom = instance.render()
+    // 根据组件的虚拟Dom生成真实Dom节点
+    instance.dom = createDom(instance.vdom)
+   
+}
+
+
 /**
  * 设置属性的函数
  * @param {html标签DOM节点} dom 
