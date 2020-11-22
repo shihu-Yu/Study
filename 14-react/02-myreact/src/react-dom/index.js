@@ -1,10 +1,10 @@
 // 模拟react-dom
-
+import React from "../react"
 import { Component } from "../react"
 
 
 
-function createDom(vdom){
+export function createDom(vdom){
     // 当传入的vdom为空时直接返回
     if(vdom == undefined) return
    
@@ -45,8 +45,8 @@ function createDom(vdom){
 
 /**
  * 该函数用于生成组件的实例对象
- * @param {*} comp 
- * @param {} props 
+ * @param {函数/组件的类} comp 
+ * @param {属性} props 
  */
 function createComponentInstance(comp,props){
     let instance
@@ -72,6 +72,10 @@ function createComponentInstance(comp,props){
 function createDomForComponentInstace(instance){
     // 获取虚拟Dom并且挂载到节点上
     instance.vdom = instance.render()
+    // 如果实例上还没有DOM节点说明是创建
+    if(!instance.dom){
+        typeof instance.componentDidMount == 'function' && instance.componentDidMount()
+    }
     // 根据组件的虚拟Dom生成真实Dom节点
     instance.dom = createDom(instance.vdom)
    
@@ -84,7 +88,7 @@ function createDomForComponentInstace(instance){
  * @param {属性名} key 
  * @param {属性值} value
  */
-function setProperty(dom,key,value){
+export function setProperty(dom,key,value){
     key.startsWith('on') && (key = key.toLowerCase())
     // 当属性为css时
     if(key == 'style' && value){
@@ -117,7 +121,6 @@ function setProperty(dom,key,value){
  * @param {挂载虚拟dom的容器} container
  */
 function render(vdom,container){
-    console.log(vdom)
     const dom = createDom(vdom)
     container.appendChild(dom)
 }

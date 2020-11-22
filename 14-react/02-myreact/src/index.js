@@ -27,18 +27,29 @@ class App extends Component{
     constructor(props){
         super(props)
         this.state = {
-            num:0
+            num:0,
+            score:100
         }
     }
     handleChange(){
         this.setState({
             num:this.state.num + 1
         })
+        this.setState({
+            score:this.state.score + 1
+        })
+        console.log(this.state.num)
+    }
+    componentDidMount(){
+        console.log('componentDidMount...')
+    }
+    componentDidUpdate(state,props){
+        console.log('componentDidUpdate...')
     }
     render(){
         return(
             <div className="App">
-                <p>{this.state.num}</p>
+                <p>{this.state.num}----{this.state.score}</p>
                 <button onClick={this.handleChange.bind(this)}>点击更改</button>
             </div>
         )
