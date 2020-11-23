@@ -2,7 +2,10 @@
 import React ,{ Component } from 'react'
 import axios from 'axios'
 import regeneratorRuntime from "regenerator-runtime"
-import Item from './Item'
+// import Item from './Item'
+import {  DatePicker } from 'antd';
+import 'antd/dist/antd.css';
+import { Row, Col ,Input,List ,Button} from 'antd';
 class App extends Component{
     constructor(props){
         super(props)
@@ -43,16 +46,25 @@ class App extends Component{
     }
     render(){
     // const items = this.state.list.map(item=><li key={item.id} onClick={this.handleDel.bind(this,item.id)} className="item">{item.task}</li>)
-    const items = this.state.list.map(item=><Item key={item.id} task={item.task} handleDel={this.handleDel.bind(this,item.id)} />)
-        return(
+    
+        return(   
             <div className="App">
-                <div  className="head">
-                    <input value={this.state.task} onChange={this.handleChange} />
-                    <button className="btnSubmit" onClick={this.handleSubmit}>提交</button>
-                </div>
-                <ul className="list">
-                   {items}
-                </ul>
+                <Row>
+                    <Col span={18}><Input onChange={this.handleChange} value={this.state.task} /></Col>
+                    <Col span={6}><Button type="primary" onClick={this.handleSubmit}>提交</Button></Col>
+                </Row>
+                <List 
+                    style={{marginTop:'30px'}}
+                    bordered
+                    dataSource={this.state.list}
+                    renderItem={item=>(
+                        <List.Item onClick={this.handleDel.bind(this,item.id)}>
+                            {item.task}
+                        </List.Item>
+                    )}
+                />
+               
+            
             </div>
         )
     }
