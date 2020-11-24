@@ -1,6 +1,6 @@
 import React  from 'react'
 import { Row, Col ,Input,List ,Button} from 'antd';
-import 'antd/dist/antd.css';
+import './index.css'
 // UI 组件
 const AppUI = (props)=>{
     const {task,list,handleChange,handleSubmit,handleDel} = props

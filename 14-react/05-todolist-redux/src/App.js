@@ -1,8 +1,6 @@
 
 import React ,{ Component } from 'react'
-import axios from 'axios'
-import regeneratorRuntime from "regenerator-runtime"
-// import Item from './Item'
+
 import {  DatePicker } from 'antd';
 // 引入UI组件
 import AppUI from'./AppUI'
@@ -36,9 +34,12 @@ class App extends Component{
     }
     
     async componentDidMount(){
+        /*
        const result = await axios.get('http://127.0.0.1:3000')
         //  改变内部state的唯一法 是一个action 后面传递的时从服务器请求回来的数据
        store.dispatch(getLoadDataAction(result.data))
+      */ 
+        store.dispatch(getLoadDataAction())
     }
     
     render(){    
