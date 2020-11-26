@@ -1,11 +1,10 @@
 import React  from 'react'
 import { Row, Col ,Input,List ,Button} from 'antd';
-import './index.css'
 // UI 组件
 const UI = (props)=>{
     const {task,list,handleChange,handleSubmit,handleDel} = props
     return(
-            <div className="App">
+            <div className="TodoList">
                 <Row>
                     <Col span={18}><Input onChange={handleChange} value={task} /></Col>
                     <Col span={6}><Button type="primary" onClick={handleSubmit}>提交</Button></Col>
@@ -25,4 +24,4 @@ const UI = (props)=>{
 }
 
 
-export default AppUI
+export default UI
