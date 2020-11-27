@@ -22,7 +22,7 @@ export const getLoadDataAction = ()=>{
     return async function (dispatch){
         const result = await axios.get('http://127.0.0.1:3000')
         dispatch({
-            type:types.DEL_DATA,
+            type:types.LOAD_DATA,
             payload:result.data
         })
 

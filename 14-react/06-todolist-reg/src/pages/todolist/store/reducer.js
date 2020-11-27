@@ -13,7 +13,7 @@ let defaultState = fromJS({list:[],task:""})
  *
  */
  function reducer(state=defaultState,action) {
-        let newState = JSON.parse(JSON.stringify(state))
+        // let newState = JSON.parse(JSON.stringify(state))
         if(action.type == types.LOAD_DATA){//初始化网络加载数据
             return state.set('list',action.payload)
         }
