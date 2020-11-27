@@ -15,23 +15,30 @@ class About extends Component{
     }
 }
 class Home extends Component{
+    constructor(props){
+        super(props)
+    }
     render(){
         return(
             <div className="Home">
                 Home Pages
-           </div>
+                {this.props.children}
+            </div>
         )
     }
 }
 
 function Users(props){
+    // 第二种方法
     const {id} = useParams()
+
+    // 第三种方法
     return(
         <div className="users">
             {/* 处理参数 */}
-           {/* users Pages , users id is by props.match:{props.match.params.id}
-           users Pages , users id is by useParams: {id} */}
-           users Pages
+            users Pages , users id is by props.match:{props.match.params.id}
+            users Pages , users id is by useParams: {id}
+           
        </div>
     )
 }
@@ -65,11 +72,43 @@ class NotFound extends Component{
         )
     }
 }
+class Admin extends Component{
+    constructor(props){
+        super(props)
+    }
+    render(){
+        return(
+            <div className="Admin">
+                <ul>
+                    <li>
+                        <NavLink activeClassName="selected" exact to="/admin/profile">管理员配置</NavLink>
+                    </li>
+                    <li>
+                        <NavLink activeClassName="selected" exact to="/admin/123">管理员中心</NavLink>
+                    </li>
+                </ul>
+                <Switch>
+                    <Route exact path="/admin" render={()=>(<h1>admin home page</h1>)}/>
+                    <Route path="/admin/profile" render={() => (<h1>admin profile page</h1>)} />
+                    <Route path="/admin/:id" render={(props) => (<h1>admin id is{props.match.params.id}</h1>)} />
+                </Switch>
+            </div>
+        )
+    }
+}
 class App extends Component{
     constructor(props){
         super(props)
+        this.state = {
+            isLogin:true//模拟登录状态
+        }
     } 
     render(){ 
+        const ProtectRoute = ({component:Component,...rest})=>
+        <Route 
+            {...rest} 
+            render={()=>(this.state.isLogin ? <Component /> : <h2>请用管理员账号登录</h2>)}
+        />
         return(
             <div className="App">
                 <Router>
@@ -101,6 +140,9 @@ class App extends Component{
                         <li>
                             <NavLink  activeClassName="selected" exact to='/Users/123'>个人中心</NavLink>
                         </li>
+                        <li>
+                            <NavLink activeClassName="selected" to="/admin">管理中心</NavLink>
+                        </li>
                     </ul>
                     {/* Switch的作用 用来路由选项,匹配到就不继续匹配 */}
                     <Switch>
@@ -124,7 +166,11 @@ class App extends Component{
 
                         {/* 方法二 */}
                         <Route exact={true} path="/" component={Home}/>
-                        <Route path="/Home" component={Home}/>
+                        {/* <Route path="/Home" component={Home}/> */}
+
+                        {/* 显示子组件 */}
+                        <Route path="/home" render={ ()=> <Home><p>这是一个子组件</p> </Home> }  />
+
                         <Route path="/About" component={About}/>
                         {/* 当请求到/Users/project这个地址时 会加载这个界面 但是请求完之后浏览器不会停止会用当前的路径
                         继续进行匹配 因此Users页面也会被请求回来 这时候需要引入Switch用来路由选项,匹配到就不继续匹配
@@ -132,10 +178,12 @@ class App extends Component{
                         */}
                         <Route path="/Users/profile" component={UsersProfile}/>
                         {/* 当路由接收参数时 下面的父元素要放在/Users/profile 这个路由下面否则会报错*/}
-                        {/* <Route path="/Users/:id" component={Users}/> */}
+                        <Route path="/Users/:id" component={Users}/>
 
                         {/* 处理参数的方法三 */}
-                        <Route path="/Users/:id" render={()=>( <Users />)}  />
+                        {/* <Route path="/Users/:id" render={(props) => (<div>User page,user id is {props.match.params.id}</div>)}  /> */}
+
+                        <ProtectRoute path="/admin" component={Admin} />
 
                         {/* 我们还可以用path="*"的Route来匹配任意路由,不过这个Route需要放到Switch的最后一个  */}
                         {/* <Route path="*" component={NotFound}/> */}
