@@ -1,9 +1,9 @@
 
 import React ,{ Component } from 'react'
-// import {HashRouter as Router,Route,Switch,Redirect} from 'react-router-dom'
+// import {HashRouter as Router,Route,Link,Switch,Redirect} from 'react-router-dom'
 
-// import {HashRouter as Router,Route,Switch,Redirect} from './react-router-dom'
-import {HashRouter as Router,Route} from './react-router-dom'
+// import {HashRouter as Router,Route,Link,Switch,Redirect} from './react-router-dom'
+import {HashRouter as Router,Route,Link} from './react-router-dom'
 
 class About extends Component{
     render(){
@@ -17,7 +17,6 @@ class About extends Component{
 class Home extends Component{
     constructor(props){
         super(props)
-        console.log(props)
     }
     render(){
         return(
@@ -31,6 +30,7 @@ class Home extends Component{
 
 class Users extends Component{
     render(){
+        console.log(this.props)
         return(
             <div className="users">
                users Pages
@@ -76,7 +76,16 @@ class App extends Component{
                     <Route path="/About" component={About}/>
                     <Route path="/Users/profile" component={UsersProfile}/>               
                     <Route path="/Users/:id" component={Users}/> */}
-                    <Route path="/home"/>
+
+                    <Link to="/home">首页</Link>&nbsp;
+                    <Link to="/about">关于</Link>&nbsp;
+                    <Link to="/users/profile">用户配置</Link>&nbsp;
+                    <Link to="/users/:id">用户中心</Link>&nbsp;
+
+                    <Route exact={true} path="/" component={Home}/>
+                    <Route path="/home" component={Home}/>
+                    <Route path="/users" component={Users}/>
+                    <Route path="/users/:id" component={Users}/>
                 </Router>
             </div>
         )
