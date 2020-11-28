@@ -3,7 +3,7 @@ import React ,{ Component } from 'react'
 // import {HashRouter as Router,Route,Switch,Redirect} from 'react-router-dom'
 
 // import {HashRouter as Router,Route,Switch,Redirect} from './react-router-dom'
-import {HashRouter as Router} from './react-router-dom'
+import {HashRouter as Router,Route} from './react-router-dom'
 
 class About extends Component{
     render(){

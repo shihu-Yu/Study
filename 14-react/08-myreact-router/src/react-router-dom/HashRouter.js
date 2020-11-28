@@ -1,24 +1,35 @@
 import React ,{ Component } from 'react'
-import Provider from './context'
+import {Provider} from './context'
  
-class HashRouter extends Comment{
+class HashRouter extends Component{
     constructor(props){
         super(props)
         this.state = {
             location:{
-                pathname:window.location.hash
+                pathname:window.location.hash.slice(1) || '/'
             }
         }
-        console.log(location)
     }
     componentDidMount(){
-        console.log(this.state.location)
+        //设置默认的hash
+        window.location.hash =  window.location.hash || '/'  
+        // 监听hash的变化
+        window.onhashchange = ()=>{
+            this.setState({
+                location:{
+                    pathname:window.location.hash.slice(1)
+                }
+            })
+        }
     }
+
     render(){
-        const value = this.state
-        return(
-            <Provider></Provider>
-        )
+        const value = {
+            ...this.state.location,
+            pathname:this.state.location.pathname
+        }
+        return(<Provider value={value} >{this.props.children}</Provider>)
+        
     }
 }
 
