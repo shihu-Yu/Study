@@ -3,7 +3,7 @@ import React ,{ Component } from 'react'
 // import {HashRouter as Router,Route,Link,Switch,Redirect} from 'react-router-dom'
 
 // import {HashRouter as Router,Route,Link,Switch,Redirect} from './react-router-dom'
-import {HashRouter as Router,Route,Link} from './react-router-dom'
+import {BrowserRouter as Router,Route,Link,Switch,Redirect} from './react-router-dom'
 
 class About extends Component{
     render(){
@@ -81,11 +81,16 @@ class App extends Component{
                     <Link to="/about">关于</Link>&nbsp;
                     <Link to="/users/profile">用户配置</Link>&nbsp;
                     <Link to="/users/:id">用户中心</Link>&nbsp;
-
-                    <Route exact={true} path="/" component={Home}/>
-                    <Route path="/home" component={Home}/>
-                    <Route path="/users" component={Users}/>
-                    <Route path="/users/:id" component={Users}/>
+                    <Switch>
+                        <Route exact={true} path="/" component={Home}/>
+                        <Route path="/home" component={Home}/>
+                        <Route path="/about" component={About}/>
+                        <Route path="/users/profile" component={UsersProfile}/>
+                        <Route path="/users/:id" component={Users}/>
+                        <Route exact={true} path="/users" component={Users}/>
+                        <Route path="/notfound" component={NotFound}/>
+                        <Redirect to="/notfound"  />
+                    </Switch>
                 </Router>
             </div>
         )
