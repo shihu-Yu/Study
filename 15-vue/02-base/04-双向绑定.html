@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双向绑定</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+
+        <!-- v-model指令主要是在表单控件或者组件上创建双向绑定 
+        将input的内容与vm实例中的data绑定在一起
+        当在输入框中输入内容时 vm实例中的data的message也会发生改变 -->
+        <input type="text" v-model="message">
+        <!-- 双向绑定修饰符 .lazy  当change 时改变 而非input实时更新-->
+        <input type="text" v-model.lazy="message" >
+        <!-- 双向绑定修饰符 .number  把输入框中的内容改变为number类型而非字符串-->
+        <input type="text" v-model.number="message" >
+        <!-- 普通的inout框即使是number类型 拿到的数据类型也是字符串 -->
+        <input type="number" v-model="message" >
+        <!-- 双向绑定修饰符 .trim 去除输入框中的空格 是拿到的结果中没有空格-->
+        <input type="text" v-model.trim="message" >
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    const vm = new Vue ({
+        el:'#app',
+        data:{
+            message:'明天你好'
+        }
+    })
+</script>
+</html>

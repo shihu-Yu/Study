@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>指令</title>
+</head>
+<body>
+    <div id="app">
+        <!-- {{message}} 处 即为插值处 -->
+        <p>{{message}}</p>
+        <!-- v-once执行一次性地插值,当数据改变时，插值处的内容不会更新 -->
+        <p v-once>{{message}}</p>
+        <!-- 输出文本 -->
+        <p v-text>{{message}}</p>
+        <!-- 输出真正的 HTML -->
+        <p v-html="message"></p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    const vm = new Vue ({
+        el:'#app',
+        data:{
+            message:'明天你好'
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命周期函数</title>
+</head>
+<body>
+    <div id="app">
+        <p ref='elem'>{{message}}</p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    const vm = new Vue({
+        el:'#app',
+        data:{
+            message:'明天你好'
+        },
+        // 该函数是在组件创建之前生效 这时由于组件还未被创建 因此获取不到 props 或者 data 中的数据的，因为这些数据的初始化都在 initState 中
+        beforeCreate(){
+            console.log('beforeCreate...')
+            console.log('this.$el: ' , this.$el)//undefiend
+            console.log('this.$data: ', this.message)//undefiend
+            console.log('this.$refs: ' ,this.$refs.elem)//undefiend
+        },
+        // 该函数是在组件创建之后调用的 可以访问到 props 或者 data 中的数据，但是这时候组件还没被挂载，所以是看不到的
+        created(){
+            console.log('created...')
+            console.log('this.$el: '  ,this.$el) //undefiend
+            console.log('this.$data: ' , this.message)//明天你好
+            console.log('this.$refs: ' , this.$refs.elem)//undefiend
+        },
+        // 在组件挂载之前
+        beforeMount(){
+            console.log('beforeMount...')
+            console.log('this.$el: ', this.$el) //<div id="app"><p ref='elem'>{{message}}</p></div>
+            console.log('this.$data: ' ,this.message)//明天你好
+            console.log('this.$refs: ',this.$refs.elem)//undefiend
+        },
+        // 组件挂载完毕后执行
+        mounted(){
+            console.log('mounted...')
+            console.log('this.$el: ', this.$el) //<div id="app"><p ref='elem'>{{message}}</p></div>
+            console.log('this.$data: ' ,this.message)//明天你好
+            console.log('this.$refs: ',this.$refs.elem)//<p ref='elem'>明天你好</p>
+        },
+        // 数据更新前执行  当在控制台通过 `vm.message`修改数据时,会执行`beforeUpdate`和`updated`方法。
+        beforeUpdate(){
+            console.log('beforeUpdate...')
+        },
+        // 数据更新后执行
+        updated(){
+            console.log('updated...')
+        },
+        // 组件卸载之前执行  //当在控制台调用 `vm.$destroy()`方法时,会执行`beforeDestroy`和`destroyed`方法。
+        beforeDestroy(){
+            console.log('beforeDestroy...')
+        },
+        // 组件卸载之后执行
+        destroyed(){
+            console.log('destroyed...')
+        }
+
+
+    })
+</script>
+</html>
