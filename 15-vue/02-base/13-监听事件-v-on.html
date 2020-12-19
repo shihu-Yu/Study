@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表渲染</title>
+    
+</head>
+<body>
+    <div id="app">
+        <!-- 使用v-on监听事件 -->
+        <button v-on:click='count++'>点击了{{count}}次</button>
+        <!-- 可以简写为 @ -->
+        <button @click='count++'>点击了{{count}}次</button>
+        <button @click='pageView'>点击了{{count}}次</button>
+        <button @click='pageView'>点击了{{count}}次</button>
+        <!-- 该种写法和上面的是一样的效果 只不过 pageView() 这样写 可以传参数 -->
+        <button @click='pageView()'>点击了{{count}}次</button>
+        <button @click="say('hello')">显示消息</button>
+        <p>她说:{{message}}</p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    const vm = new Vue({
+        el:'#app',
+        data:{
+            count:'0',
+            message:''
+        },
+        // 绑定事件的函数必须写在methods中
+        methods:{
+            pageView:function(){
+                this.count++
+            },
+            say:function(msg){
+                this.message = msg
+            }
+        }
+    })
+</script>
+</html>

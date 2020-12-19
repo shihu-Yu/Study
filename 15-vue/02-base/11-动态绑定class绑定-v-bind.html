@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表渲染</title>
+    <style>
+        #app{
+            width: 600px;
+            margin:50px auto;
+        }
+        p{
+            margin-bottom: 5px;
+        }
+        .active{
+            border-bottom: 4px rgb(128, 109, 0) solid;
+        }
+        .error{
+            color: maroon;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 普通添加class -->
+        <p class="active error">class="active error"</p>
+        <!-- 使用v-bind 普通字符串方法 -->
+        <p :class="strClass">:class="strClass"</p>
+
+        <!-- 使用v-bind 对象语法 -->
+        <p :class="{active:true,error:true}">class="{active:true,error.true}"</p>
+        <p :class="{active:isActive,error:isError}">:class="{active:isActive,error:isError}"</p>
+        <p :class="objClass">:class="objClass"</p>
+
+        <!-- 使用v-bind 数组语法 -->
+        <p :class="['active','error']">:class="['active','error']"</p>
+        <p :class="[isActive ? 'active' : '' , isError ? 'error' : '']">:class="[isActive ? 'active' : '' , isError ? 'error' : '']"</p>
+        <p :class="arrClass">:class="arrClass"</p>
+
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    const vm = new Vue({
+        el:'#app',
+        data:{
+            strClass:"active error",
+            isActive:true,
+            isError:true,
+            objClass:{
+                active:true,
+                error:true
+            },
+            arrClass:['active','error']
+        },
+        
+    })
+</script>
+</html>

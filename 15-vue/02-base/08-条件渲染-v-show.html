@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件渲染</title>
+</head>
+<body>
+    <div id="app">
+        <input type="number" v-model='score'>
+        <p>你的成绩是: {{score}}</p>
+        <!-- 使用v-show 只是简单地切换元素的 CSS 属性 display,元素始终会被渲染并保留在 DOM 中 -->
+        <p v-show = "score >=60">及格</p>
+        <p v-show = "score < 60">不及格</p>
+
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    const vm = new Vue({
+        el:'#app',
+        data:{
+            score:''
+        }
+    })
+</script>
+</html>

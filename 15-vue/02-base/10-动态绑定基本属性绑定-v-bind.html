@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表渲染</title>
+</head>
+<body>
+    <div id="app">
+        <a href="http://www.baidu.com">百度</a>
+        <!-- 要绑定属性要使用  v-bind: -->
+        <a v-bind:href="url">百度</a>
+        <!-- v-bind 可以简写为  :    -->
+        <a :href="url">百度</a>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    const vm = new Vue({
+        el:'#app',
+        data:{
+           url:'http://www.baidu.com'
+        }
+    })
+</script>
+</html>

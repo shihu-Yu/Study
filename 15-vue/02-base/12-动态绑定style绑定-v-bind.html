@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表渲染</title>
+    <style>
+        #app{
+            width: 600px;
+            margin:50px auto;
+        }
+        p{
+            margin-bottom: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 普通添加style-->
+        <p style="border-bottom: 4px rgb(128, 109, 0) solid; color: maroon; ">style="border-bottom: 4px rgb(128, 109, 0) solid; color: maroon; "</p>
+        <!-- 使用v-bind 普通字符串方法 -->
+        <p :style="strStyle">:style="strStyle"</p>
+
+        <!-- 使用v-bind 对象语法 -->
+        <p :style="{borderBottom:' 4px rgb(128, 109, 0) solid' ,color: 'maroon'}">:style="{borderBottom:' 4px rgb(128, 109, 0) solid' ,color: 'maroon'}"</p>
+        <p :style="{borderBottom:activeStyle,color:errorStyle}">:style="{borderBottom:activeStyle,color:errorStyle}"</p>
+        <p :style="objStyle">:style="objStyle"</p>
+
+        <!-- 使用v-bind 数组语法 -->
+        <p :style="[{borderBottom:' 4px rgb(128, 109, 0) solid'},{color: 'maroon'}]">:style="[{borderBottom:' 4px rgb(128, 109, 0) solid'},{color: 'maroon'}]"</p>
+        <p :style="[{borderBottom:activeStyle},{color:errorStyle}]">:style="[{borderBottom:activeStyle},{color:errorStyle}]"</p>
+        <p :style="arrStyle">:style="arrStyle"</p>
+
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    const vm = new Vue({
+        el:'#app',
+        data:{
+            strStyle:"border-bottom: 4px rgb(128, 109, 0) solid;  color: maroon;",
+            activeStyle:'4px rgb(128, 109, 0) solid',
+            errorStyle:'maroon',
+            objStyle:{
+                borderBottom:' 4px rgb(128, 109, 0) solid' ,
+                color: 'maroon'
+            },
+            arrStyle:[{borderBottom:' 4px rgb(128, 109, 0) solid'},{color: 'maroon'}]
+        },
+        
+    })
+</script>
+</html>
