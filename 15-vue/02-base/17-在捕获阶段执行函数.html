@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表渲染</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .center{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        #grand-father{
+            width: 600px;
+            height: 600px;
+            background-color: gray;
+        }
+        #father{
+            width: 400px;
+            height: 400px;
+            background-color: blue;         
+        }
+        #son{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="center">
+        <!-- 当使用该修饰符时 使用该修饰符的事件会在捕获阶段就被执行 会先被调用 -->
+        <!-- <div id="grand-father" class="center" @click.capture="clickGrandfather"> -->
+        <div id="grand-father" class="center" @click.capture="clickGrandfather()">
+            <div id="father" class="center" @click="clickFather()">
+                <div id="son" @click="clickSon"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    const vm = new Vue({
+        el:'#app',
+        methods:{
+            clickGrandfather:function(){
+                console.log('clickGrandfather...')
+            },
+            clickFather:function(ev){
+                console.log('clickFather...')
+            },
+            clickSon:function(){
+                console.log('clickSon...')
+            }
+
+        }
+    })
+</script>
+</html>

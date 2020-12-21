@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算属性</title>
+</head>
+<body>
+    <div id="app1">
+        <!-- 使用组件 -->
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+    </div>
+    <div id="app2">
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    const vm1 = new Vue({
+        el:'#app1',
+        // 在components选项中定义局部组件  局部组件只能在当前的vue实例中使用不能被 其他的vue实例使用
+        components:{
+            'button-counter':{
+                data(){
+                    return{
+                        count:0
+                    }
+                },
+                methods:{
+                    calcacute:function(){
+                        this.count++
+                    }
+                },
+                template:'<button @click="calcacute">点击了{{count}}次</button>'
+            }
+        }
+    })
+
+    // 局部组件只能在当前的vue实例中使用不能被 其他的vue实例使用
+    const vm2 = new Vue({
+        el:'#app2',
+    })
+
+</script>
+</html>

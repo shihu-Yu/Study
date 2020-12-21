@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算属性</title>
+</head>
+<body>
+    <div id="app">
+        <p>姓氏:{{firstName}}</p>
+        <p>名字:{{lastName}}</p>
+        <p>{{firstName + lastName}}</p>
+        <p>{{getname()}}</p>
+        <p>{{getFullName}}</p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    const vm = new Vue({
+        el:'#app',
+        data:{
+            firstName:"韩",
+            lastName:"梅梅"
+        },
+        methods:{
+            getname(){
+                return this.firstName + this.lastName
+            }
+        },
+        /* 计算属性的方法要写在这里面 写在 computed 选项中的一个属性,属性名就是计算属性的名称。
+            通常用来获取通过复杂逻辑计算后的结果,适合用在模板渲染中。
+            如果某个值是依赖其它的响应式对象甚至是计算属性计算而来，我们就可以使用计算属性。
+        */
+        computed:{
+            getFullName(){
+                return this.firstName + this.lastName
+            }
+        }
+    })
+</script>
+</html>

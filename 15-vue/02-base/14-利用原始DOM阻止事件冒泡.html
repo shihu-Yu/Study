@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表渲染</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .center{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        #grand-father{
+            width: 600px;
+            height: 600px;
+            background-color: gray;
+        }
+        #father{
+            width: 400px;
+            height: 400px;
+            background-color: blue;         
+        }
+        #son{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="center">
+        <div id="grand-father" class="center" @click="clickGrandfather">
+            <!-- <div id="father" class="center" @click="clickFather"> -->
+            <div id="father" class="center" @click="clickFather('hello',$event)">
+                <div id="son" @click="clickSon"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    const vm = new Vue({
+        el:'#app',
+        methods:{
+            // 利用原始DOM阻止事件冒泡
+            clickGrandfather:function(){
+                console.log('clickGrandfather...')
+            },
+            // clickFather:function(ev){
+            //     console.log(ev)
+            //     ev.stopPropagation()
+            //     console.log('clickFather...')
+            // },
+            // 当上面html中绑定函数的方式是调用时就不能使用该方法 ，要使用下面的形式传递参数 否则ev 的输出结果是undefined
+
+            // 上面传参时要写成$event 其它参数可以随便写 但在这里接收参数时要和传入时的顺序保持一致
+            clickFather:function(msg,ev){
+                console.log(msg)//hello
+                console.log(ev)
+                ev.stopPropagation()
+                console.log('clickFather...')
+            },
+            clickSon:function(){
+                console.log('clickSon...')
+            }
+
+        }
+    })
+</script>
+</html>

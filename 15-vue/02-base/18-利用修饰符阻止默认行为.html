@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表渲染</title>
+</head>
+<body>
+    <div id="app" >
+        <!-- 指定一个函数 -->
+        <!-- 修饰符   .prevent   阻止默认行为 -->
+        <!-- <a href="http://www.taobao.com" @click.prevent="goShopping">购物</a> -->
+
+        <!-- 方法二指定一个函数的调用 -->
+        <a href="http://www.taobao.com" @click.prevent="goShopping()">购物</a>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    const vm = new Vue({
+        el:'#app',
+        methods:{
+            goShopping:function(){
+                console.log('goShopping...')
+            }
+
+        }
+    })
+</script>
+</html>

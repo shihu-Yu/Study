@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表渲染</title>
+</head>
+<body>
+    <div id="app" >
+        <!-- <a href="http://www.chenniantao.com" @click="goLearn">学习</a> -->
+
+        <!-- 使用传递参数的形式绑定事件时 event对象作为参数 要写成固定格式 $event   参数在传递时的顺序没有要求 -->
+        <a href="http://www.baidu.com" @click="goLearn('haha',$event)">学习</a>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    const vm = new Vue({
+        el:'#app',
+        methods:{
+            // goLearn:function(ev){
+                //     阻止默认行为
+            //     ev.preventDefault()
+            // }
+
+            // 接收参数时参数的顺序要和传递时保持一致
+            goLearn:function(msg,ev){
+                console.log(msg)
+                // 阻止默认行为
+                ev.preventDefault()
+            }
+        }
+    })
+</script>
+</html>
