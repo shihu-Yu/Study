@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据传递</title>
+</head>
+<body>
+    <div id="app1">
+        <!-- 使用组件 -->
+        <!-- 使用v-bind: 动态绑定属性来传递数据 -->
+        <my-component :msg="msg"></my-component>
+    </div>
+    <template id="button-counter">
+        <p>这是一个组件模板{{msg}}</p>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    // 使用Vue.extend方法来定义组件
+    const MyComponent = Vue.extend({
+        // 接收组件传递来的数据
+        // props:['msg'],
+        // 另外一种写法
+        /*
+        props:{
+            //指定传递过来的数据类型
+            msg:String,
+        },
+        */
+        props:{
+            //指定传递过来的数据类型
+            msg:{
+                // 指定类型并且 指定默认值
+                type:String,
+                default:'heihei'
+            }
+        },
+        template:'#button-counter'
+
+    })
+    // 组件的注册
+    Vue.component('my-component',MyComponent)
+    const vm1 = new Vue({
+        el:'#app1',
+        data:{
+            msg:'hello'
+        }
+    })
+    
+</script>
+</html>

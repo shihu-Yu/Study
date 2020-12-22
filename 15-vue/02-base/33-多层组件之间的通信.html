@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据传递</title>
+</head>
+<body>
+    <div id="app1">
+        <!-- 使用组件 -->
+        <!-- 使用v-bind: 动态绑定属性来传递数据 -->
+        <grand-father-component :score="score" ></grand-father-component>
+    </div>
+
+    <!-- 子组件模板1 -->
+    <template id="son-component">
+        <div>
+            <p>this is son component , get score is :{{score}} </p>
+        </div>
+    </template>
+
+    <!-- 子组件模板2 -->
+    <template id="father-component">
+        <div>
+            <p>this is father component , get score is :{{score}} </p>
+            <son-component :score="score" ></son-component>
+        </div>
+    </template>
+
+    <!-- 父组件模板 -->
+    <template id="grandFather-component">
+        <!-- 模板中只能放一个组件，如果有多个需要用div或者其他标签包裹起来 -->
+        <div>
+            <p>this is grandFather component ,get score is {{score}}</p>
+            <father-component :score="score" ></father-component>
+        </div>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    // 使用EventBus 来时兄弟组件之间进行数据传递
+    const sonComponent = Vue.extend({
+       
+        template:'#son-component',
+        props:{
+            score:Number
+        },
+    })
+    const fatherComponent = Vue.extend({
+        components:{
+            'son-component':sonComponent,
+        },
+        props:{
+            score:Number
+        },
+        template:'#father-component'
+    })
+    // 使用Vue.extend方法来定义组件
+    const grandFatherComponent = Vue.extend({
+        template:'#grandFather-component',
+        
+        // 注册子组件 子组件的定义要写在父组件之前
+        components:{
+            'father-component':fatherComponent,
+        },
+        props:{
+            score:Number
+        },
+
+    })
+    const vm1 = new Vue({
+        el:'#app1',
+        data(){
+            return{
+                score:100
+            }
+        },
+        // 局部组件的注册
+        components:{
+            'grand-father-component':grandFatherComponent,
+        },
+        
+    })
+    
+</script>
+</html> 

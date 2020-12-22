@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据传递</title>
+</head>
+<body>
+    <div id="app1">
+        <!-- 使用组件 -->
+        <!-- 使用v-bind: 动态绑定属性来传递数据 -->
+        <father-component ></father-component>
+    </div>
+    <template id="son-component">
+        <div>
+            <p>this is son component , get score is :{{score}} </p>
+            <input type="text" v-model="extra_score">
+        </div>
+    </template>
+    <template id="father-component">
+        <!-- 模板中只能放一个组件，如果有多个需要用div或者其他标签包裹起来 -->
+        <div>
+            <p>this is father component , score is : {{score}}</p>
+            <son-component :score="score"></son-component>
+        </div>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    
+    const sonComponent = Vue.extend({
+        // props接收传递的数据
+        props:{
+            score:Number
+        },
+        data(){
+            return{
+                extra_score:0
+            }
+        },
+        // 侦听数据
+        watch:{
+            extra_score(){
+                // 这种方法无法改变父组件的值
+                // this.score = this.score + parseInt(this.extra_score) 
+                // 通过调用父组件上的方法来 改变父组件上的数据
+                this.$parent.addExtraScore(this.extra_score)
+            }
+        },
+        template:'#son-component'
+    })
+    // 使用Vue.extend方法来定义组件
+    const FatherComponent = Vue.extend({
+        data(){
+            return{
+                score:88
+            }
+        },
+        methods:{
+            // 在父组件中定义方法使子组件调用来改变父组件中的数据
+            addExtraScore:function(extra_score){
+                this.score = this.score + parseInt(extra_score)
+            }
+        },
+        // 注册子组件 子组件的定义要写在父组件之前
+        components:{
+            'son-component':sonComponent
+        },
+        template:'#father-component'
+
+    })
+    const vm1 = new Vue({
+        el:'#app1',
+        // 局部组件的注册
+        components:{
+            'father-component':FatherComponent
+        }
+    })
+    
+</script>
+</html>

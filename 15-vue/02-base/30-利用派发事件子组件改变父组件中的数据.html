@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据传递</title>
+</head>
+<body>
+    <div id="app1">
+        <!-- 使用组件 -->
+        <!-- 使用v-bind: 动态绑定属性来传递数据 -->
+        <father-component ></father-component>
+    </div>
+    <template id="son-component">
+        <div>
+            <p>this is son component , get score is :{{score}} </p>
+            <input type="text" v-model="extra_score">
+        </div>
+    </template>
+    <template id="father-component">
+        <!-- 模板中只能放一个组件，如果有多个需要用div或者其他标签包裹起来 -->
+        <div>
+            <p>this is father component , score is : {{score}}</p>
+            <!-- 通过绑定自定义事件 -->
+            <son-component :score="score" @get-extra-score="getExtraScore"></son-component>
+        </div>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    
+    const sonComponent = Vue.extend({
+        // props接收传递的数据
+        props:{
+            score:Number
+        },
+        data(){
+            return{
+                extra_score:0
+            }
+        },
+        // 侦听数据
+        watch:{
+            extra_score(){
+                //  触发一个自定义事件 并且携带数据
+                this.$emit('get-extra-score',this.extra_score)    
+            }
+        },
+        template:'#son-component'
+    })
+    // 使用Vue.extend方法来定义组件
+    const FatherComponent = Vue.extend({
+        data(){
+            return{
+                score:88
+            }
+        },
+        methods:{
+            // 定义一个事件来处理子组件传递来的数据
+            getExtraScore:function(extra_score){
+                this.score = this.score + parseInt(extra_score)
+            }
+        },
+        // 注册子组件 子组件的定义要写在父组件之前
+        components:{
+            'son-component':sonComponent
+        },
+        template:'#father-component'
+
+    })
+    const vm1 = new Vue({
+        el:'#app1',
+        // 局部组件的注册
+        components:{
+            'father-component':FatherComponent
+        }
+    })
+    
+</script>
+</html>

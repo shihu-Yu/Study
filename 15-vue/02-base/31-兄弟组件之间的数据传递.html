@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据传递</title>
+</head>
+<body>
+    <div id="app1">
+        <!-- 使用组件 -->
+        <!-- 使用v-bind: 动态绑定属性来传递数据 -->
+        <father-component ></father-component>
+    </div>
+
+    <!-- 子组件模板1 -->
+    <template id="son1-component">
+        <div>
+            <p>this is son1 component , get score is :{{score}} </p>
+            <input type="number" v-model.number="score">
+        </div>
+    </template>
+
+    <!-- 子组件模板2 -->
+    <template id="son2-component">
+        <div>
+            <p>this is son2 component , get score is :{{score}} </p>
+            <input type="number" v-model.number="score">
+            <p>this is son1 component , get score is :{{score1}} </p>
+            <p> total score is :{{total}} </p>
+        </div>
+    </template>
+
+    <!-- 父组件模板 -->
+    <template id="father-component">
+        <!-- 模板中只能放一个组件，如果有多个需要用div或者其他标签包裹起来 -->
+        <div>
+            <!-- 通过绑定自定义事件 -->
+            <son1-component  ></son1-component>
+            <son2-component  ></son2-component>
+
+        </div>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    
+    const son1Component = Vue.extend({
+        data(){
+            return{
+                score:0
+            }
+        },
+        
+        template:'#son1-component'
+    })
+    const son2Component = Vue.extend({
+        data(){
+            return{
+                score:0,
+                score1:0
+            }
+        },
+        computed:{
+            total(){
+                return this.score + this.score1
+            }
+        },
+        watch:{
+            score(){
+                // 通过parent.$children获取son1上的score
+                /**
+                 * 该方法的缺点
+                 * 1. 兄弟组件的值更新后不会通知当前的组件，只有当前组件重新获取才可以拿到兄弟组件的值
+                 * 也就是只有监听的son2上面的score发生改变 才能获取到son1上的score
+                 * 2.用数组下标获取兄弟组件的实例时,这个下标的顺序不能保证
+                */
+                this.score1 = this.$parent.$children[0].score
+            }
+        },
+        template:'#son2-component'
+    })
+    // 使用Vue.extend方法来定义组件
+    const FatherComponent = Vue.extend({
+        
+        // 注册子组件 子组件的定义要写在父组件之前
+        components:{
+            'son1-component':son1Component,
+            'son2-component':son2Component,
+        },
+        template:'#father-component'
+
+    })
+    const vm1 = new Vue({
+        el:'#app1',
+        // 局部组件的注册
+        components:{
+            'father-component':FatherComponent,
+        }
+    })
+    
+</script>
+</html>
