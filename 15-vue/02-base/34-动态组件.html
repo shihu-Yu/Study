@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据传递</title>
+</head>
+<body>
+    <div id="app1">
+        <button
+            v-for="(table,index) in tables"
+            @click="selectedIndex = index"
+            key="index"
+        >
+            {{table}}
+        </button>
+        <component :is="currentComponent"></component>
+    </div>
+
+    <!-- 子组件模板1 -->
+    <template id="table-home">
+        <div>
+            <p>this is table home page </p>
+        </div>
+    </template>
+
+    <!-- 子组件模板2 -->
+    <template id="table-article">
+        <div>
+            <p>this is table article page  </p>
+        </div>
+    </template>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    Vue.component('table-home',{
+        template:'#table-home'
+    })
+    Vue.component('table-article',{
+        template:'#table-article'
+    })
+    const vm1 = new Vue({
+        el:'#app1',
+        data(){
+            return{
+                tables:['home','article'],
+                selectedIndex:0
+            }
+        },
+        computed:{
+            currentComponent(){
+                return 'table-' + this.tables[this.selectedIndex]
+            }
+        }
+        
+    })
+    
+</script>
+</html> 
