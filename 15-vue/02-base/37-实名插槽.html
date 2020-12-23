@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>匿名插槽</title>
+    
+</head>
+<body>
+    <div id="app1">
+        <layout>
+            <!-- 当使用的插槽为实名插槽时要使用template标签 -->
+             <!--2.v-slot:后指定插槽的名称-->
+            <template v-slot:focus>
+                <p>自定义的slot内容</p>
+            </template>
+            <!-- v-slot可以简写为# -->
+            <template #main>
+                <p>自定义的main内容</p>
+            </template>
+        </layout>
+    </div>
+
+    <!-- 子组件模板1 -->
+    <template id="layout">
+        <div>
+            <nav>导航栏</nav>
+            <div class="content">
+                <!-- 添加name属性来指定插槽名称 -->
+                <slot name="focus">这是设定的focus默认内容</slot>
+                <slot name="main">这里是定main的默认内容</slot>
+            </div>
+            <footer>这是footer</footer>
+        </div>
+    </template>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    Vue.component('layout',{
+        template:'#layout'
+    })
+    
+    const vm = new Vue({
+        el:'#app1',
+        
+    })
+    
+</script>
+</html> 

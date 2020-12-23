@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过滤器</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 过滤器的使用 直接在{{}} 中使用 例如{{price | formatPrice}}-->
+        <p>{{price | formatPrice}}</p>
+        <!-- 过滤器的使用 在动态属性绑定中使用 例如:title="price | formatPrice"-->
+        <p  :title="price | formatPrice">{{price | formatPrice}}</p>
+    </div>
+
+    <div id="app1">
+        <p>{{price | formatPrice}}</p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+       
+    const vm = new Vue({
+        el:'#app',
+        data(){
+            return{
+                price:88
+            }
+        },
+        // 注册一个局部过滤器 这个过滤器只能在当前实例中使用
+        filters:{
+            formatPrice(price){
+                return '￥' + price
+            }
+        }
+    })
+
+    const vm1 = new Vue({
+        el:'#app1',
+        data(){
+            return{
+                price:999
+            }
+        },
+    })
+    
+</script>
+</html> 

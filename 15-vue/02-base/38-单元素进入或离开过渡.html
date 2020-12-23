@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>匿名插槽</title>
+    <style>
+        /* 添加的过度样式 */
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity .5s;
+        }
+        .fade-enter, .fade-leave-to{
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="app1">
+        <div>
+            <button @click='show = !show'>切换</button>
+            <!-- 需要过渡的元素要用<transition>元素包裹起来 -->
+            <!-- 过渡的类名默认前缀是v-,可以在<transition>元素中添加name属性来改变类名的前缀。
+            另外可以通过在<transition>元素中添加appear 属性来设置节点在初始渲染的过渡。 -->
+            <transition name="fade" appear>
+                <p v-if="show">哈啊哈啊啊啊哈哈</p>
+            </transition>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    const vm = new Vue({
+        el:'#app1',
+        data(){
+            return{
+                show : true
+            }
+        }
+    })
+    
+</script>
+</html> 

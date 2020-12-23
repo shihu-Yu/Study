@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过滤器</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 过滤器的使用 直接在{{}} 中使用 例如{{price | formatPrice}}-->
+        <p>{{price | formatPrice}}</p>
+        <!-- 过滤器的使用 在动态属性绑定中使用 例如:title="price | formatPrice"-->
+        <p  :title="price | formatPrice">{{price | formatPrice}}</p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+        // 注册一个过滤器 作用：过滤器的作用一般是把数据传递进来 然后通过函数处理之后在返回数据
+        Vue.filter('formatPrice',function(price){
+            return '￥' + price
+        })
+    const vm = new Vue({
+        el:'#app',
+        data(){
+            return{
+                price:88
+            }
+        }
+    })
+    
+</script>
+</html> 

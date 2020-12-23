@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>匿名插槽</title>
+    
+</head>
+<body>
+    <div id="app1">
+        <layout>
+            <p>这是调用插件是写的内容</p>
+        </layout>
+    </div>
+
+    <!-- 子组件模板1 -->
+    <template id="layout">
+        <div>
+            <nav>导航栏</nav>
+            <div class="content">
+                <slot>这里可以设定默认内容1</slot>
+                    <!--匿名插槽,如果有多个匿名插槽,每一个匿名插槽都会被匿名插槽的内容替换-->
+                <slot>这里可以设定默认内容2</slot>
+            </div>
+            <footer>这是footer</footer>
+        </div>
+    </template>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>
+    Vue.component('layout',{
+        template:'#layout'
+    })
+    
+    const vm = new Vue({
+        el:'#app1',
+        
+    })
+    
+</script>
+</html> 

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>路由</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 使用router-link组件来导航 -->
+        <router-link to="/home">Home</router-link>
+        <router-link to="/about">About</router-link>
+        <router-link to="/admin">Admin</router-link>
+        <!-- 路由出口 -->
+        <!-- 路由匹配到的组件将渲染在这里 -->
+        <router-view></router-view>
+    </div>
+    <template id="home">
+        <p>home page</p>
+    </template>
+    <template id="about">
+        <p>about page</p>
+    </template>
+    <template id="admin">
+        <p>admin page</p>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    // 定义路由组件
+    const Home  = Vue.extend({template:'#home'})
+    const About = Vue.extend({template:'#about'})
+    const Admin = Vue.extend({template:'#admin'})
+
+    // 定义路由
+    const routes = [
+        {path:'/home',component:Home},
+        {path:'/about',component:About},
+        {path:'/admin',component:Admin},
+    ]
+    // 创建router实例
+    const router = new VueRouter({
+        routes
+    })
+    // 创建根实例并且挂载路由
+    const vm = new Vue({
+        el:'#app',
+        router
+    })
+
+    
+</script>
+</html> 
