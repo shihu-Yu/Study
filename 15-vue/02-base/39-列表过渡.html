@@ -61,16 +61,16 @@
                 提交
             </button>
         </div>
-        <ul class="list">
+        <transition-group  class="list" tag='ul' name="fade" appear>
             <li 
                 class="item"
                 v-for="item in list"
-                key="item.id"
+                :key="item.id"
                 @click="delItem(item.id)"
             >
                 {{item.task}}
             </li>
-        </ul>
+        </transition-group>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
