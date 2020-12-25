@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>处理参数</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <!-- 使用路由组件 -->
+            <router-link to="/home">Home</router-link> 
+            <router-link to="/admin">Admin</router-link> 
+            <router-link to="/about">About</router-link> 
+        </div>
+         <!-- 路由出口 -->
+        <!-- 路由匹配到的组件将渲染在这里 -->
+        <router-view></router-view>
+    </div>
+    <template id="home">
+        <p>home page</p>
+    </template>
+    <template id="about">
+        <p>about page  <router-link to="/about/123">About Detail</router-link></p>
+    </template>
+    <template id="about-detail">
+        <!-- 通过this.$route.params 获取路由参数 -->
+        <p>about Detail page  {{this.$route.params.id}} -- {{id}}</p>
+    </template>
+    <template id="admin">
+        <p>admin page</p>
+    </template>
+    <template id="notFound">
+        <h1>NOT FOUND</h1>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    // 定义路由组件
+    const Home = Vue.extend({template:'#home'})
+    const About = Vue.extend({template:'#about'})
+    const AboutDetail = Vue.extend({
+        template:'#about-detail',
+        // 通过props形式传递参数
+        props:['id']
+    })
+    const Admin = Vue.extend({template:'#admin'})
+    const NotFound = Vue.extend({template:'#notFound'})
+
+    // 定义路由
+    const routes = [
+        {path:'/home',component:Home},
+        {path:'/about',component:About},
+        {path:'/about/:id',component:AboutDetail, props:true} ,//布尔参数模式,
+        {path:'/admin',component:Admin},
+        {path:'/',redirect:'/home'},// direct路由重定向 从 / 定向到 /home
+        {path:'*',component:NotFound}// 通配符路由
+        
+    ]
+    
+    // 创建路由实例
+    const router = new VueRouter({
+        routes
+    })
+
+    // 创建Vue实例 挂载路由组件
+    const vm = new Vue({
+        el:'#app',
+        router
+    })
+
+
+</script>
+</html> 
