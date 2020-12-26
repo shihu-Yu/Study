@@ -1,3 +1,4 @@
+import {LOAD_ITEM} from './types'
 
 import axios from 'axios'
 
@@ -6,7 +7,7 @@ const actions = {
         // 异步发送请求
         const result = await axios.get('http://127.0.0.1:3000')
         // commit(type,payload)
-        commit('loadItem',result.data)
+        commit(LOAD_ITEM,result.data)
     }
 }
 

@@ -13,7 +13,7 @@
 import Head from '../../components/head'
 import List from '../../components/list'
 import {mapActions} from 'vuex'
-import {LOAD_ITEM} from './store/types'
+import {LOAD_ITEM} from '../../store/types'
 
 export default {
     name:'Todolist',

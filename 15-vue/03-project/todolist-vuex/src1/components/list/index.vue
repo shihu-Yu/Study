@@ -30,7 +30,7 @@ export default {
         // ...mapState(['list']),
         // 与上面的效果相同,只不过这种写法可以改变list的名称
         ...mapState({
-            list:state=>state.todolist.list
+            list:'list'
         }),
 
         // 使用mapGetters将getters映射到计算属性之中
