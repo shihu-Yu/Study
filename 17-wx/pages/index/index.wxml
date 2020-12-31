@@ -1,0 +1,29 @@
+<view>
+  <!-- 数据的绑定 -->
+  {{message}}
+  <!-- 列表渲染 item是默认的写法-->
+  <!-- <view wx:for="{{list}}" wx:key="index">{{item.task}}</view> -->
+  <!-- 通过wx:for-item 来对item重新命名 -->
+  <view wx:for="{{list}}" wx:key="index" wx:for-item="itemName">{{itemName.task}}</view>
+  <!-- 条件渲染 -->
+  <view  wx:if="{{show}}">显示</view>
+  <!-- 绑定事件 bindtap  该方法不阻止冒泡-->
+  <!-- <view bindtap="bindtap">点击</view> -->
+  <!-- 绑定事件时传递数据 -->
+  <view bindtap="bindtap" data-id="123" data-age="20">传递数据</view>
+  <!-- 阻止冒泡 catchtap    -->
+  <view id="outer" bindtap="handleTap1">
+    outer view
+    <view id="middle" catchtap="handleTap2">
+      middle view
+      <view id="inner" bindtap="handleTap3">
+        inner view
+      </view>
+    </view>
+  </view>
+
+  <!-- 更新数据 -->
+  <button type="primary" bindtap="updata">点击更新</button>
+
+  <!-- 跳转页面 -->
+</view>
