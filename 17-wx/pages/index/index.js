@@ -28,7 +28,21 @@ Page({
   handleTap3:function(){
     console.log('handleTap3...')
   },
-
+  gotoDetail:function(){
+    wx.navigateTo({
+      url: "../../pages/detail/index"
+    })
+  },
+  gotoCart(){
+    wx.switchTab({
+      url: '../../pages/cart/index',
+    })
+  },
+  gotoDetail2:function(){
+    wx.navigateTo({
+      url: "../../pages/detail/index"
+    })
+  },
   //更新数据 setState 
   updata:function(){
     // 这里的this指向page

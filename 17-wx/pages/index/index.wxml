@@ -26,4 +26,12 @@
   <button type="primary" bindtap="updata">点击更新</button>
 
   <!-- 跳转页面 -->
+  <view>
+    <navigator url="/pages/cart/index" open-type="switchTab" hover-class="other-navigator-hover">去购物车</navigator>
+    <navigator url="/pages/detail/index" open-type="navigate" hover-class="other-navigator-hover">去详情页</navigator>
+  </view>
+<button bindtap="gotoDetail">去详情页</button>
+<button bindtap="gotoCart">去购物车</button>
+<button bindtap="gotoDetail2">去详情页</button>
+
 </view>

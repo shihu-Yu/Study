@@ -1,2 +1,3 @@
 <!--pages/detail/index.wxml-->
 <text>pages/detail/index.wxml</text>
+<button bindtap="gotoDetail2">去详情页</button>
